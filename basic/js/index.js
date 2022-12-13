@@ -1,7 +1,15 @@
 // console.log('Hello JavaScript');
 
 // 2022. 12. 16 화요일 수업
+
+// 노드문 설치  -> nodejs 실행 후 npm install -g nodemon (노드문 설치)
+// nodejs command prompt 사이트
+// 노드문 설치 확인 -> npm list -g
+// 노드js 출력연결 -> nodemon 파일명.js 
 /*
+
+
+
 데이터 타입
 
 String, Number, Boolean, Null, Undefined, BigInt
@@ -349,4 +357,608 @@ String, Number, Boolean, Null, Undefined, BigInt
     //     console.log('foo')
     // }
 
+
+    // =========================================================
+
+    // 22년 12월 8일 프론트엔드 자바스크립트 수업2일차
+
+    /*
+        2. Switch 조건문
+
+        엄격 동등 연산(===)을 수행한다
+    */
+
+        // var year = 2022;
+        // switch (year){
+        //     case 2021:
+        //         console.log('작년')
+        //         break;
+        //     case 2022:
+        //         console.log('이번 년도');
+        //         break;
+        //     case 2023:
+        //         console.log('내년')
+        //         break;
+        //     default:        // 어떤 조건도 안맞다면 실행
+        //         console.log('.')
+
+        
+        // }
+
+
+    /*
+        3. ? (삼항연산자)
+
+        조건문을 간단한 문법으로 구현 할 수 있다.
+
+        조건 ? 값1 : 값2
+        조건이 참인경우 값1을 리턴한다
+        조건이 거짓인 경우 값2를 리턴한다
+    */
+
+        // var year = 2022;
+        // var r = year === 2022 ? '올해' : '올해가 아닙니다';
+        // console.log(r);
+
+
+        // Q1. 다음 변수를 활용해서 나이가 십대이면 '그는 십대입니다.'
+        // 십대가 아니면 '그는 십대가 아닙니다.'를 출력하는 조건문을 만들어보세요. 
+        // if 조건문 , ?(삼항연산자) 두 경우를 모두 만들어보세요
+        // var joage = 22;
+
+        // if(joage > 13 && joage < 20){
+        //     console.log('그는 미성년자 입니다.')
+        // }else{
+        //     console.log('그는 성인 입니다.')
+        // }
+
+        // 삼항연산자
+        // 성인/성인이아닌지 (18세 기준)
+        // var j = (joage >= 18) ? '성인' : '성인이아닙니다';
+        // console.log(j);
+
+
+        /*
+            ====반복문====        
+
+            1. For 반복문
+            2. while 반복문
+        */
+
+        // 1. For 반복문
+
+        // 0에서 3 사이의 숫자를 출력한다
+        // for (var i=0; i<3; i++){
+        //     console.log(i);
+        // } 
+
+        // # 반복문을 사용해서 1에서 10까지의 합 구하기
+
+        // var sum = 0;
+        // for (var i=1; i<=10;i++){
+        //     sum += i;   // sum = sum + i;
+        // }
+        // console.log(sum)
+
+        // # 문자열 순회하기
+        // var foo = 'bar';
+
+        // for (var i=0; i<foo.length; i++){
+        //     console.log(foo[i]);
+        // }
+
+        // # break와 continue
+        // break 멈춘다
+        // comtinue 멈추가 다시 위에서 부터 실행한다. 
+        // for (var i=0; i<=10; i++){
+            //     if(i===5){
+            //         break;
+            //     }
+            //     console.log(i);
+            // }
+                
+        //     for (var i=0; i<=10; i++){
+        //         if(i===5){
+        //         continue;
+        //     }
+        //         console.log(i)
+        //         //0~4 6~10
+        // }
+
+        // 2. while 반복문
+        // 0과 3사이의 숫자 출력하기
+
+        // var i=0;
+        // while(i<3){
+        //     console.log(i)
+        //     i++;
+        // }
+
+
+
+        // Q1. for반복문을 사용해서 a에서c까지만 출력해보세요.
+        // var alphabets = 'abcdefg';
+
+        // for (i=0; i<3;i++){
+        //     console.log(alphabets[i])
+        // }
+
+
+        // Q2. 10, 20, 30, ....100 까지의 합을 구해보세요
+        // var r = 0;
+        // for (var i=1; i<=10; i++){
+        //     r += i*10;
+        // }
+        // console.log(r);
+
+        // var sum = 0;
+        // for (var i= 10 ; i<=100; i+=10){
+        //     sum +=i;
+        // }
+        // console.log(sum)
+
+
+        /*
+            ===== 변수와 상수 =====
+
+            1. var (변수, variables)   
+            2. let (변수)   
+            3. const (상수, constant) 
+        */
+
+
+        // 1. var (변수, variables)
+        // var foo = 'bar';
+        // console.log(foo);
+
+        // var foo = 'bar';
+        // console.log(foo);
+        // foo = 'baz';        // 대입
+        // console.log(foo);
+
+
+        // var foo = 'bar'     // 선언
+        // var foo = 'baz'     // foo 변수를 재선언 
+        // console.log(foo)
+
+        // var foo;                // 선언, 공간을 만듦
+        // foo = 'bar';            // 정의, 값을 할당.
+        // console.log(foo);       // 출력
+
+        // 2. let (변수)
+        // var 변수가 너무 느슨해서 생긴 코드
+        // var 보다는  조금더 엄격한 코드이다.
+
+        // let foo ='bar';
+        // console.log(foo);
+
+        // let foo = 'bar'         // 변수를 주고 값을 할당하는 것까지를  초기화라고 한다.
+        // foo = 'baz'             // 재정의, 대입
+        // console.log(foo);
+
+
+        // let foo;                    // 선언, 공간생성
+        // foo = 'bar'                 // 정의, 값을 할당
+        // console.log(foo)
+
+
+
+        // let은 재선언(대입)이 불가능 하다.
+        // let foo = 'bar';
+        // let foo = 'baz';        // 재선언 불가
+        // console.log(foo)
+
+        // 3. const (상수)
+        // const는 재선언 재할당 등. 불가능하다.
+        // const foo = 'bar'           
+        // console.log(foo)
+
+        // # let 과 const는 블록(block)범위를 갖는다
+        // 블록{중괄호} 안에서 작동을 할수있다.
+        // 블록은 if, for에도 유용하게 사용된다. 
+        // {    
+        //     // var은 블록 밖에서도 사용이 가능하다.
+        //     var foo = 'Foo'
+        //     // let, const는 블록 밖에서는 사용 할수가 없다.
+        //     let bar = 'Bar'         
+        //     const baz = 'Baz'
+
+        //     console.log(foo)
+        //     console.log(bar)
+        //     console.log(baz)
+        // }
+        // console.log(foo)         // 사용가능
+        // console.log(bar)         // 에러 불가능
+        // console.log(baz)         // 에러 불가능
+
+
+        /*
+            =========== 함수 ============
+
+            호출될 때만 실행되는 코드
+
+            1. 함수 정의하기
+                > 함수선언식
+                > 함수표현식과 화살표 함수
+            2. Hoisting
+            3. 전역변수와 지역변수
+            4. 'return' 키워드
+            5. 함수의 인자
+            6. 콜백
+        */
+
     
+
+        // 1. 함수 정의하기
+        //    > 함수선언식
+
+        // function f(){
+        //     console.log('foo')
+        // }
+        // 함수 실행
+        // f()
+
+        //     > 함수표현식
+        // 변수에 익명함수를 할당한다.
+        // const f = function () {
+        //     // const가 아니여도 된다 var let 등등
+        //     console.log('foo')
+        // }
+        // f()
+
+        // > 화살표 함수
+        // 여기서는 function 이라는 함수 대신에 => 화살표로 대신 함.
+        // const f = () => {
+        //     console.log('foo')
+        // }
+        // f()
+
+        // 2. Hoisting(게양)
+        // 실행보다 정의가 아래어도 정상 작동
+        // 함수의 정의가 실행시점보다 위로 간다
+        // 함수선언식에서만 적용된다.
+
+        // f()
+        // function f(){
+        //     console.log('foo')
+        // }
+
+        // 함수표현식, 화살표 함수식은 hoisting(게양)이 안된다.
+        // f()
+        // const f = () => {
+        //     console.log('foo')
+        // }
+
+        // 3. 전역변수와 지역변수
+        // > 전역(global)변수
+        // 함수 밖에서 선언된 변수
+
+        // const foo = 'bar'           // 전역변수
+        // function f(){
+        //     // 함수안에서 접근 가능
+        //     console.log(foo)
+        // }
+        // f()
+
+
+        // > 지역(local)변수
+        // 함수 안에서 선언된 변수
+        // 종류와 상관없이 함수 안에서 선언되면 지역변수
+
+        // function f(){
+        //     const foo = 'bar'
+        // }
+        // f();
+
+        // 지역변수는 함수 밖에서 접근이 불가능하다.
+        // console.log(foo);
+
+        // 2022.12.13 flontend java
+
+        // vscode 에서 터미널 사용시 파워쉘보다는 커멘드프론포트 사용이 좋다.
+
+        // 4. 함수의 인자
+
+        // function add(x,y){      // parameter : x,y 함수를 정의할때 
+        //     console.log(x+y);
+        // }
+        // add(1,2);       // argument : 1,2 
+
+        // 5. 'return'키워드 
+
+        // function add(x,y) {
+        //     return x + y;       // 뜻 그대로 값을 반환한다.
+        // }
+        // const r = add(1,2);
+        // console.log(r)
+
+        // typeof 값의 타입을 나타냄
+        // String, nomber, 등등
+
+        // function add(x, y){      
+        //     if (typeof x !== 'nomber' || typeof y !== 'number'){
+        //         return '인자는 Number타입이어야 합니다'
+        //     }
+
+        //     // 위 조건이 맞을 경우 실행되지 않음
+        //     return x + y;
+        // }
+        // let r = add(5, 5);     
+        // console.log(r);
+
+        // 6. 콜백(callback)
+        // 다른 함수의 인자가 되는 함수
+
+        // function f(callback) {
+        //     let r = callback()
+        //     console.log(r)
+        // }
+        // function cb(){      // callback
+        //     return "foo"
+        // }
+        // f(cb);
+
+
+        //  # 콜백으로 익명함수를 사용하기
+
+        // function f(callback) {
+        //     let r = callback();
+        //     console.log(r);
+        // }
+        // f(function () {
+            
+        //     return "foo"
+        // })
+
+        // 시계 만들기
+
+        // function getTime(){     // 현재 실행 되는 시간의 표시하는 함
+        //     let time = new Date().toLocaleTimeString();
+        //     console.log(time)
+        // }
+        // setInterval(getTime, 1000);
+        // setInterval(callback, ms) (ms = number타입)
+        // ms(milliseconds)마다 callback을 실행하는 함수이다
+        
+
+        // Q. 나이를  인자로 전달받아서 성인이면 ' 성인입니다' or '성인이 아닙니다'를
+        // 출력하는 함수를 만들어보세요
+        // 인자가 숫자가 아닌 경우 연산을 중단하고 메시지를 출력하는 기능도 추가해보세요.
+
+        
+        // function isAdult(age){      
+        // if (typeof age !== 'number'){
+        // return '숫자 타입이 아닙니다.'
+        // } 
+        // else if (age >= 18) {
+        //     return '성인입니다.'
+        // }else {
+        //     return '성인이 아닙니다.'
+        //     }
+        // }
+        // const r= isAdult(20)
+        // console.log(r)
+
+
+        /*
+            =========== 에러와 에러처리 ============
+            
+            1. 에러의 정의
+
+            2. 에러 처리
+            try/catch
+
+            3. 에러의 종류
+            > ReferenceError
+            > SyntaxError
+            > TypeError
+            > RangeError
+            > URIError
+
+            4. 커스텀 에러
+
+         */
+
+            // 1. 에러의 정의
+            // 에러는 name, message, stack으로 구성 되어있다.
+            // 에러는 프로그램을 중단시킨다.
+            // 에러는 처리가 되어야 한다.
+
+            //console.log(x)
+
+            // 2. 에러 처리
+            
+            // try{
+            //     // 코드를 작선한다.
+            //     let x = 'foo';
+            //     console.log(x)
+            // } catch (err){
+            //     // 에러를 처리한다.
+            //     // 에러 나는 것 만을 처리해 줌, 작동은 하지만, 문제를 고쳐야한다.
+            //     console.error(err)
+            // }
+
+            // try/catch ... finally
+
+            // try {
+
+            //     console.log(x)
+
+            // } catch (err){
+            //     console.error(err)
+            // }finally {  // 에러 발생여부와 상관없이 항상 실행된다.
+            //     console.log('.')
+            //     // 어떤 문제가 발생해도 실행되어야 하는 것을 넣는다.
+            // }
+
+
+            // 3. 에러의 종류
+            // > Reference Error
+            // 선언되지 않은 변수를 참조했을 때 발생 하는 에러
+
+            // try{
+            //     console.log(x)
+
+            // } catch(err){
+            //     console.error(err)
+            // }
+
+            // > Syntax Error
+            // try/catch 에서는 처리 불가, 문법 오류
+            // 컴파일 에러를 발생시킨다.
+            // 컴파일러가 코드를 이해하지 못 해서 발생하는 에러
+
+            // try {
+            //     console.log(2022));
+            // }
+            // catch (err){
+            //     console.error(err)
+            // }
+
+
+
+            // > Type Error
+            // 변수나 인자가 유효한 타입이 아닐 경우 발생한다.
+            // 변수 혹은 값의 타입이 아닐 경우 발생 하는 에러
+
+            // try {
+            //     // setInterval(callback, ms)
+            //     setInterval(null, 1000)
+            // }catch (err){
+            //     console.error(err)
+            // }
+
+            
+
+            // > Range Error
+            // 값이 허가된 범위를 벗어났을 때 발생한다.
+            // 밑의 예시 경우 toPrecision의 범위는 1~100이지만 그 이상을 주어서 에러가 발생.
+
+            // try{
+            //     const pi = Math.PI;  
+            //     // math = 3.14를 리턴하는값
+            //     // toPrecision(1~100)는 정밀도 값 즉 3.14 ********** 까지 정밀하게 출력해준다.
+            //     console.log(pi.toPrecision(200))
+            // }
+            // catch(err){
+            //     console.error(err)
+            // }
+
+
+            // > URI Error
+            // encodeURI() 또는 decodeURI() 함수가 유효하지 않은 인자를 전달받았을 때 발생한다.
+
+            // try{
+            //     decodeURI('%')
+            // }catch(err){
+            //     console.error(err)
+            // }
+
+            // 4. 커스텀 에러
+
+            // try{
+            //     let age = 15;
+
+            //     console.log('기네스 한병 주세요');
+            //     if (age < 18){
+            //         // throw는 커스텀 에러이다. 조건이 맞을 경우 throw는 catch로 전달된다.
+            //         throw '미성년자는 술을 살 수 없습니다.'
+            //     }
+            //     // 실행되지 않는다.
+            //     console.log('여기있습니다.');
+
+            // }catch(err){
+            //     console.error('에러: ', err)
+            // }
+
+            /*
+                ========= Array(배열) =================
+
+                1. Array에 접근하기
+
+                2. Array의 메서드
+
+                3. Array 순회하기
+
+            */
+
+            // 1. Array에 접근하기
+
+            // 변수에 []로  아이템을 넣는다. ',' 로 아이템을 나눈다. 
+            // let arr = ['foo', 'bar', 'baz']
+            
+            // console.log(arr[0]) // foo
+            // console.log(arr[1]) // bar
+            // console.log(arr[2]) // baz
+            // console.log(arr.length) //3    length 배열 안의 총 갯수
+
+            // 2. Array의 메서드
+            
+            // let arr = ['foo', 'bar']
+            // // arr.push(newItem) : 배열 마지막에 아이템을 추가
+            // arr.push('baz')
+            // console.log(arr)
+
+            // =================================================
+
+            // let arr = ['foo', 'bar', 'baz']
+            // // 가장 마지막의 아이템을 1개 제거한다.
+            // arr.pop()
+            // console.log(arr)
+
+            // =============================================
+
+            // let arr =['foo', 'bar', 'baz']
+            // Array.splice(시작index, (갯수))
+            // 인덱스 위치에 있는 항목 제거
+            
+            // arr.splice(1,2);
+            // console.log(arr);
+
+
+            // =====================================================
+
+            // Array.concat()
+            // 기존 배열에 합친다.
+            // 기존배열을 변경하지 않는다.
+            // 추가된 새로운 배열을 반환한다.
+            // 1안에 2를 합친다.
+            // let arr1 = ['foo', 'bar']
+            // let arr2 = ['baz']
+
+            // let arr3 = arr1.concat(arr2);
+
+            // console.log(arr3)
+        
+
+
+            // 3. Array 순회하기 (반복문)
+            
+            // let arr = ['foo', 'bar', 'baz']
+
+            // for (let i=0; i<arr.length; i++){
+                // Array의 아이템에  특정한 작업을 수행할 수 있다.
+                // toUpperCase() : 문자열을 대문자로 전환시켜준다.
+            //     console.log(arr[i].toUpperCase());
+            // }
+
+            // console.log(arr[0].toUpperCase());
+            
+            // Q. A,B,C 로만 구성된 Array로 바꾸어보세요
+            // Array.splice()를 사용
+
+            // const alphabets = ['A', 'B', 'C', 'D','E', 'F', 'G']
+            // alphabets.splice(3);
+            // console.log(alphabets);
+
+            // Q. 각 아이템에 10을 곱한 값의 합을 구해보세요.(60)
+            // 반복문을 사용해서
+
+            // let arr = [1, 2, 3]
+            // let sum = 0;
+            // for (i=0; i<arr.length; i++){
+            //     sum += (arr[i]*10) 
+            // }
+            // console.log(sum)
+
+            // ================================================
