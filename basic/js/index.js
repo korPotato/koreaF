@@ -930,7 +930,33 @@ String, Number, Boolean, Null, Undefined, BigInt
 
             // console.log(arr3)
         
+            // ================================================
+            //  Array.filter(callback)
+            // 조건에 맞는 아이템만 필터링 한다.
+            // filter() 메서드는 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환합니다.
+            
+            // 예시 1
+            // const arr = ['foo', 'bar', 'baz']
 
+            // const r = arr.filter(function (item, index, array){
+            //     // function(callback) 각요소를 시험할 함수
+            //     // item(element) 처리할 현재 요소
+            //     // index 처리할 현재 요소의 인덱스
+            //     // array : filter를 호출한 배열
+            //     if(item[0]==='b'){      // 아이템 중에서 첫글자가 b로 시작하는 아이템
+            //         return item;
+            //     }
+            // })
+            // console.log(r)
+
+            // 예시 2
+            // const arr = [1,2,3,4,5];
+            // const r = arr.filter(function(item, index, array){
+            //     if(item>3){
+            //         return item;
+            //     }
+            // })
+            // console.log(r);
 
             // 3. Array 순회하기 (반복문)
             
@@ -962,3 +988,260 @@ String, Number, Boolean, Null, Undefined, BigInt
             // console.log(sum)
 
             // ================================================
+
+            // 2022 - 12 - 15 flontend javaScript
+
+            /*
+                ========== Object (객체) ==============
+                데이터와 함수의 집합
+
+                - 값이 null아니면 undefined빈 객체를 생성하여 반환합니다.
+                - 그렇지 않으면 해당하는 타입의 객체를 반환합니다.
+                - 값이 이미 반환된 경우 해당 값을 반환합니다.
+            */
+
+            // const cat = {
+            // // 속성 (property)
+            //     name: "키티",
+            //     home: null,
+            //     // 속성의 값이 함수인 경우 : 메서드(method)
+            //     sound: function (){
+            //         return "야옹"
+            //     }
+            // }
+            // // // cat 객체에 접근하기
+            // // console.log(cat);
+            // // console.log(cat.name);  // 이름 속성에 접근
+            // // console.log(cat['name']);       // 이름 속성에 접근
+            // // console.log(cat.color);       // 존재하지 앟는 속성에 접근 : undefined
+            // // console.log(cat.sound())  // sound 메서드에 접근, 메서드는 꼭 ()와 함께 입력해야 출력된다.
+
+
+            // //=========================================
+
+            // // # 객체에 새로운 속성을 추가하기
+            // cat.age = 2;
+            // console.log(cat)
+
+            // // # 객체의 속성을 업데이트 하기
+            // // 이미 존재하는 변수에 값을 대입
+            // cat.home = '평리단길'
+            // console.log(cat)
+
+            // // # 객체의 속석은 삭제하기
+            // delete cat.home;
+            // console.log(cat);
+
+            // ===========================================
+
+            // Q. 객체문제
+
+            // Q1. for반복문을 이요해서
+            // 맥주의 이름만 출력해보세요
+
+            // const beers = [
+            //     {name: 'Guinness', origin: 'Ireland'},
+            //     {name: 'Heineken', origin: 'Netherlands'},
+            //     {name: 'Budwiser', origin: 'USA'},
+            // ]
+            // for(i=0; i<beers.length;i++){
+            //     console.log(beers[i].name)
+            // }
+
+            // Q2. 유럽맥주의 이름을 출력해보세요
+            // for반복문을  이용해서 
+
+            // const beers = {
+            //     europeanBeer: ['Guinness', 'Heineken', 'Kronenbourg'],
+            //     asianBeers: ['Asahi', 'Kloud']
+            // }
+            // for(i=0; i < beers.europeanBeer.length; i++){
+            // console.log(beers.europeanBeer[i])
+            // }
+            // const europeanBeer = beers.europeanBeer;
+
+            // for(let europeanBeer of europeanBeer){
+            //     console.log(europeanBeer)
+            // }
+
+            // Q3. 판매중인 맥주(abailable: true)의 배열(Array)을 만들어보세요
+            // filter 메서드를 사용해서
+            // const beers = [
+            //     {name: 'Guinness', origin: 'Ireland', available: false},
+            //     {name: 'Heineken', origin: 'Netherlands', available: true},
+            //     {name: 'Budwiser', origin: 'USA', available: true}
+            // ]
+
+            // const i = beers.filter(function(item,index,array){  // 사용하지 않는 index,array는 지워도 에러가 나지는 않는다.
+            //                                 // 속성값을 임의로 지정해서 사용할수도있다.
+            //                                 // item = (지정값), index(지정), array(지정)                                     
+            //     if(item.available){
+            //         // 아이템 안의 availabel 중 참인 것
+            //         return item;
+            //     }
+            // })
+            // console.log(i)
+
+// ===============================================
+
+        
+        /*
+            ======= Class =========
+            객체를 생성하기 위한 템플릿
+
+            1. 클래스와 인스턴스
+            2. 정적(static) 속성과 정적 메서드
+            3. 미리정의된 클래스
+            4. 리터럴 표기법
+        */
+
+
+            // 1. 클래스와 인스턴스
+            
+            // 인스턴스
+            // 같은 클래스에 속하는 개개의 객체로, 하나의 클래스에서 생성된 객체를 말한다. 
+            // 즉 클래스가 구체화되어, 클래스에서 정의된 속성과 성질을 가진 실제적인 객체로 표현된 것을 의미한다.
+            // 인스턴스는 클래스로 부터 상속받는다.
+            // 메서드 또한 클래스로 부터 상속받는다.
+
+    // class Cat{          // 클래스 이름의 첫글자는 대문자로 해야한다.
+    //     // 생성자(함수)
+    //     // 인스턴스의 속성을 설정한다
+    //     constructor (name, age){
+    //         this.name = name;
+    //         this.age = age;
+    //     }
+    //     // 클래스의 속성
+    //     home = null;
+
+    //     // 클래스의 메서드
+    //     sound(){        
+    //         return '야옹'
+    //     }
+    // }
+    // // Cat의 인스턴스
+    // const cat = new Cat('키티', 2)          // object
+    // console.log(cat instanceof Cat)     // true출력
+    // console.log(cat)
+    // // Cat클래스의 home속성을 상속받았다.
+    // console.log(cat.home)   // null출력
+    // // Cat클래스의 sound메서드를 상속받았다.
+    // console.log(cat.sound())    // 야옹
+
+// ==============================================================
+
+    //2. 정적 속성과 정적 메서드
+        // 클래스와 관련된 유틸리티를 제공한다.
+        /* static 키워드는 클래스를 위한 정적(static) 메서드를 정의합니다. 
+            정적 메서드는 클래스의 인스턴스화(instantiating) 없이 호출되며, 클래스의 인스턴스에서는 호출할 수 없습니다.
+        정적 메서드는 어플리케이션(application)을 위한 유틸리티(utility) 함수를 생성하는 데 주로 사용됩니다.
+        반면, 정적 속성은 캐시, 고정 환경설정 또는 인스턴스 간에 복제할 필요가 없는 기타 데이터에 유용합니다.*/
+
+// class Cat{
+//     // 정적 속성(property)
+//     static personality = '폭력적'
+
+//     // 정적 메서드
+//     static isAdult(age){
+//         if(age<1) {
+//             return '아기고양이'
+//         }else {
+//             return '어른고양이'
+//         }
+//     }
+// }
+
+// // 인스턴스 생성 하지 않음
+// // 클래스 자체가 정적 속성을 호출한다.
+// console.log("성격: "+Cat.personality);
+// console.log(Cat.isAdult(2));
+
+// // Math 클래스의 정적 속성 PI   // 3.14**********
+// const pi = Math.PI;
+// console.log(pi);
+
+// number클래스의 isNaN(Not a Number) 정적메서드
+// console.log(Number.isNaN('foo'-1))
+
+// =====================================================================
+
+/*
+    3. 미리 정의된 클래스
+        > 문자처리 : String
+        > 숫자와 날짜 관련 :  Nimber, Math, Date
+        > 인덱스 컬렛션 : Array
+        > 에러 : SyntaxError, ReferenceError, TypeError, .....
+        > 기타 : Promise, JSON
+*/
+
+// =========================================================================
+
+    // 4. 리터럴 표기법
+        // 클래스 호출하여 사용 했다.
+        // new String () (String 클래스의 사용)
+    // let foo = new String('Foo')
+    // console.log(foo)
+    
+    // String클래스의 인스턴스
+    // 리터럴 표기법 사용( 클래스를 호출하지 않는다.)
+    // 코드를 더 간단하게 사용할수있어서 사용한다.
+    // let foo = 'Foo'
+    // console.log(foo)
+    // console.log(foo.toUpperCase())   // String클래스로부터 상속받은 메서드
+
+    // Number클래스의 인스턴스
+    // let year = 2022;
+    // // Number클래스로부터 상속받은 메서드
+    // console.log(year.toString(2));
+    //     //toString(2) 2진법으로 표기한다.
+
+// ==============================================================================
+
+// let date = new Date().toLocaleTimeString();
+// // 시간,날짜date 객체는 리터럴표기법을 사용하 수 없다.
+// console.log(date)
+
+
+// =======================================================================
+
+// Q 클래스 문제
+
+/* 
+    Q1. 다음을 클래스로 정의해보세요.
+
+    Beer 클래스
+    >인스턴스 속성
+    이름(name), 원산지(origin)
+    > 클래스 속성
+    역사(history): B.C 3000
+    > 클래스 메서드
+    만드는법(recipe) : 보리, 홉, 효모, 물로 만듭니다
+    > 정적 송성
+    주의(caution): 지나친 음주는 돈이 많이 듭니다.
+*/
+
+// class Beer{
+//        constructor(name, origin){
+//         this.name=name;
+//         this.origin=origin;
+//     }
+//         history='B.C 3000';
+//        rectip(){
+//         return '보리, 홉, 효모, 물로 만듭니다.'
+//        }
+//        static caution = '지나친 음주는 돈이 많이 듭니다.'
+// }
+// // Beer클래스의 인스턴스
+// const irishBeer = new Beer('Guinness','Ireland');
+// const dutchBeer = new Beer('Heineken', 'Netherlands')
+// // 클래스의 속성
+// console.log(irishBeer.history);
+// console.log(dutchBeer.history);
+// // 클래스의 메서드
+// console.log(irishBeer.rectip());
+// console.log(dutchBeer.rectip());
+// // 정적속성
+// console.log("주의: "+Beer.caution);
+
+// ==========================================================================
+
