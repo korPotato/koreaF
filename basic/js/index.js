@@ -1245,3 +1245,396 @@ String, Number, Boolean, Null, Undefined, BigInt
 
 // ==========================================================================
 
+// 2022 - 12 - 16 금요일 flontend javascript
+
+/*
+    ====== 비동기 작업 (Asynchronous) ===========
+    블로킹을 방지하기 위해 사용된다.
+    (프로그램이 실행 되다가 중간에 막히는 상태를 블로킹이라고 한다.)
+    예시) 서버에 데이터를 요청하는 등..
+
+    1. 동기 작업
+    2. 비동기 작업
+    3. 실제 사용 예시
+*/
+// ========================================================================
+    // 1. 동기 작업
+
+    // function f(){
+    //     console.log('foo')
+    // }
+    // f() // 동기 함수 : 호출되었을 때 실행된다
+
+    // console.log('bar')
+
+// ========================================================================
+
+    // 2. 비동기 작업
+
+    // function f(){
+    //     setTimeout(()=>{
+    //         console.log('foo')
+    //     },0)
+    // }
+    // f()     // 비동기 함수 : 호출 순서와 상관없이 가장 마지막에 실행된다.
+    // console.log('bar')
+
+    // 비동기 함수에서 에러 처리
+
+    // function f(){
+    //     setTimeout(() => {
+    //         console.log(x)      // x  선언되지 않은 변수를 사용해서 app crashed 발생
+    //     },0)
+    // }
+    // try{
+    //     f()     // try/catch 에서 비동기 함수의 에러를 처리할 수 없다.
+    //     console.log('bar');
+    // }catch(err){console.error(err)}
+
+// ========================================================================
+
+    // 3. 실제 사용 예시
+    // function fetchData(callback){
+    //     let data = {foo: 'bar'}
+    //     setTimeout(()=>{callback(null, data), 1000})
+    // }
+    // // 서버에 데이터를 요청하는 함수, 비동기 함수
+    // // 서버에서 데이터를 응답받는데 1초가 걸린다고 가정.
+    // fetchData(function (err, data){
+    //     // 비동기함수 내부에서 에러 처리 (try/catch)
+    //     try{
+    //         if(err){throw err;}
+    //         console.log('서버의 응답:', data)
+    //     }catch (err){console.error(err)}
+    // })
+    // console.log("다음 작업")
+
+// ========================================================================
+
+    /*
+        ====== Promise 객체 ==========
+        비동기 작업의 성공/실패 여부 및 결과를 나타낸다
+        비동기 작업의 가독성을 향상시키기 위해 사용한다.
+
+        1. Promise객체의 구조
+        2. 실제 사용 예시
+        3. async/await
+    */
+
+    // 1. 구조
+
+    // const o = new Promise((res, reh) =>{
+
+        
+
+    //     // 비동기 작업이 성공함
+    //     // res('foo')  //res (Resolve, 성공)
+
+    //     // 비동기 작업이 실패함
+    //     // rej('bar')   //rej (Reject, 오류)
+    // })
+    // // 상태 : pending은 비동기 작업이 보류중임을 의미한다.
+    // // 상태 : fullfilled은 비동기 작업이 성공함을 의미한다.
+    // // 상태 : rejected는 비동기 작업이 실패함을 의미한다.
+    // console.log(o)
+
+
+// ========================================================================
+
+    // 2. 실제 예시
+
+    // function fetchData(){
+    //     const promise = new Promise((res, rej)=> {
+    //         res({foo:'bar'})
+    //     })
+    //     // Promise객체를 리턴한다.
+    //     return promise;
+    // }
+    // // 서버에 데이터를 요청하는 함수
+    // fetchData()
+    // // .then()은 성공에 대한 콜백과 실패에 대한 콜백의 두 가지 인수를 사용한다.
+    // // 둘 다 선택 사항이므로 성공 또는 실패에 대한 콜백만 추가할 수 있다.
+    // .then(data => {     // 데이터를 처리하는 부분
+    //     console.log(data)
+    // })
+    // .catch(err => {     // 에러를 처리하는 부분
+    //     console.error(err)
+    // })
+    // console.log("다음 작업")
+
+// ========================================================================
+
+    // 3. async / await
+
+    // function fetchData(){
+    //     const promise = new Promise((res, rej)=> {
+    //         res({foo:'bar'})
+    //     })
+    //     // Promise객체를 리턴한다.
+    //     return promise;
+    // }
+    // f()
+    // async function f(){
+    //     try {
+    //         const data = await fetchData(); // 비동기 작업이 끝날때까지 기다린다.
+    //         // 비동기 작업이 많을 때 사용한다.
+    //         // await는 async 안에서만 사용 할수 있다.
+    //         console.log(data);
+
+    //         console.log("다음 작업")
+    //     }
+
+    //     catch (err) {
+    //         console.error(err)
+    //     }
+    // }
+
+// ========================================================================
+
+    /*
+        ======== ES6 (2015) ==============
+        새로운 문법이 많이 나온 버전
+
+        1. 새로나온  문법
+            > 삼항연산자
+            > let, const
+                - let : 블록 범위로 변수를 선언할 수 있다.
+                - const : 상수(상수 값이 있는 JavaScript 변수)를 선언할 수 있습니다. 상수는 값을 변경할 수 없다는 점을 제외하면 let 변수와 유사합니다.
+            > 화살표 함수 : 화살표 함수는 함수 표현식을 작성하기 위한 짧은 구문을 허용합니다.
+            > Array.map()메서드
+            > 구조분해할당 (destructing)
+            > 전개구문 (spread syntax)
+            > 클래스
+            > Promise
+
+    */
+    
+// ========================================================================
+
+    // 1. Array.map() 메서드
+
+    // const arr = ['foo', 'bar', 'baz']
+
+    // // 배열을 순회하면서 아이템에 특정한 작업을 할 수 있다.
+    // // 새로운 배열을 리턴한다.
+    // const r = arr.map((item, index, array) => {
+    //     return item.toUpperCase()
+    // })
+    // console.log(r)
+
+// ========================================================================
+
+    // 2. 구조분해할당 (destructing assignment)
+    // 리엑트에서 많이 사용한다.
+    // 간단한 문법으로 객체/배열의 속성/아이템을 변수에 할당할 수 있다.
+    // 객체 - 속성
+    // 배열 - 아이템
+
+    // const arr = ['foo', 'bar', 'baz']
+
+    // // // index로 접근 하면 같은 작업을 반복해야 한다.
+    // // const foo = arr[0]
+    // // const bar = arr[1]
+    // // const baz = arr[2]
+
+    // // // console.log(foo)
+    // // // console.log(bar)
+    // // // console.log(baz)
+    // // console.log(foo, bar, baz);
+
+
+
+    // // 구조분해할당
+    // // 배열 목록을 분해하여 나열하여 값을 준다.
+    // const  [foo, bar, baz] = arr;
+    // // []안에 할당할 순서에 맞게 입력.
+    // console.log(foo,bar,baz)
+
+// ========================================================================
+
+    // 객체에서 구조분해할당
+
+    // 구조분해할당 하지 않은 경우.
+    // const o = {foo: 'foo', bar: 'bar', baz:'baz'}       
+    // // const foo = o.foo;
+    // // const bar = o.bar;
+    // // const baz = o.baz;
+    // // console.log(foo,bar,baz)
+
+    // // 변수의 이름과 속성의 이름이 같아야한다.
+    // const {foo, bar, baz} = o;          
+    // console.log(foo,bar,baz);
+
+// ========================================================================
+
+    // 함수의 파라미터의 구조분해할당
+
+    // const o = {foo: 'foo', bar: 'bar', baz:'baz'}
+
+    // // 구조분해할당 X
+    // // function f(props){
+    // //     const foo = props.foo;
+    // //     const bar = props.bar;
+    // //     const baz = props.baz;
+
+    // //     console.log(foo, bar, baz)
+    // // }
+    // // f(o)
+
+    // // 구조분해할당 
+    // function f({foo, bar, baz}){
+    //     console.log(foo,bar,baz)
+    // }
+    // f(o)
+
+// ========================================================================
+
+    /*
+        Q. 구조분해할당 문제 lol
+    */
+
+    // Q1. 각 나라의 맥주를 변수에 담아보세요
+    // 구조분해할당을 사용하시오
+    // irishBeer, dutchBeer, americanBeer
+    // const beers = [
+    //     {name: 'Guinness', origin: 'Ireland'},
+    //     {name: 'Heineken', origin: 'Netherlands'},
+    //     {name: 'Budwiser', origin: 'U.S'}
+    // ]
+
+    // const [irishBeer, dutchBeer, americanBeer] = beers;
+    // console.log(irishBeer);
+    // console.log(dutchBeer);
+    // console.log(americanBeer);
+
+
+    // Q2. 객체의 속성을 변수에 담아보세요
+    // 구조분해할당을 이용
+    // const irishBeer = {name: 'Guinness', origin: 'Ireland', available: fales}
+
+    // const {name, origin, available} = irishBeer;
+    // console.log(name, origin, available)
+
+
+    // Q3. 함수의 파라미터를 객체분해할당 문법으로 작성해보세요.
+
+    // const irishBeer =  {name: 'Guinness', origin: 'Ireland', available: false}
+    // function f({name,origin,available}){
+    //     console.log(name,origin,available)
+    // }
+    // f(irishBeer);
+
+
+// ========================================================================
+
+    /*
+        ======= 전개구문 ( spread syntax) =======
+        객체/배열의 속성/아이템을 간편하게 복사할 수 있다.
+    */
+
+    // 배열
+
+    // const arr = ['foo', 'bar'];
+    // const newItem = 'baz';
+
+    // const r = [...arr, newItem];
+    //     // ... => arr 안의 속성을 복사한다.
+
+    // console.log(r);
+
+    // const arr1 = ['foo', 'bar', 'ssd']
+    // const arr2 = ['baz','dfd'];
+    
+    // // const r = [...arr1, ...arr2];
+    // // console.log(r)
+
+    // const r = [...arr2, ...arr1]
+    // console.log(r)
+
+
+// ========================================================================
+
+    // 객체 전개구문
+
+    // 1. 추가
+    // const o = {foo: 'foo', bar: 'bar'}
+    // // 새로운 속성 추가
+    // const r = {...o, baz: 'baz'}
+    // console.log(r)
+
+    
+    // 2. 기존 속성의 업데이트 (대입)
+    // const o = {foo: 'foo', bar:'bar', baz:'baz'}
+    // // 속성업데이트
+    // const r = {...o, bar:null}
+    // console.log(r)
+
+
+    // ========================================================================
+
+    // Q. beers 배열에 일본 맥주를 추가해주세요
+    // 전개구문 이용
+    // const beers = [
+    //     {name: 'Guinness', origin: 'Ireland'},
+    //     {name: 'Heineken', origin: 'Netherlands'},
+    //     {name: 'Kloud', origin: 'S.Korea'},
+    // ]
+    // const japanBeer = {name: 'Asahi', origin: 'Japen'}
+    // const r = [...beers,japanBeer ]
+    // console.log(r)
+
+
+    // Q. 기네스가 재입고 되었다.
+    // 객체의 전개구문을 이용
+
+    // const irishBeer = {name: 'Guinness', origin: 'Ireland', available: false};
+    // const r = {...irishBeer, available:true}
+    // console.log(r)
+
+
+// ========================================================================
+
+/*
+    ======= JSON (JavaScript Object Notation) ==========
+    자바스크립트 객체 표기법
+    자바스크립트 객체를 저장하거나 전송하기 위한 텍스트 포멧
+
+    1. 객체와 JSON
+    2. JSON.stringfy()
+    3. JSON.parse()
+
+*/
+
+    
+    // 1. 객체와 JSON 
+    // const o = {foo: 'bar'}
+
+    // // '' 안에 객체를 넣고  속성과 값을 ""에 넣어 준다.
+
+    // const json = '{"foo": "bar"}'
+
+    // console.log(o)
+    // console.log(json)
+    // console.log(typeof json)    // string
+
+
+    // 2. JSON.stringfy()
+    // 객체를 JSON 포맷으로 변환한다
+
+    // const o = {foo: 'bar'}
+    // const r = JSON.stringify(o);
+    //     // JSON.stringify() 괄호안에 변수값을 주면 JSON으로 변환한다.
+    // console.log(r)
+
+
+    // 3. JSON.parse()
+    // JSON을 객체로 변환한다
+
+    // const json = '{"foo":"bar"}'
+    // const r = JSON.parse(json)
+    // console.log(r)
+
+
+    
+// ==========================이론 끝==============================================
+
