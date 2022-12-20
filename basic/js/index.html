@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <!-- 2022-12-20 화요일 Flontend -->
+    <!-- <h1>자바스크립트와 HTML</h1>
+
+    <ol>
+        <li>window 객체</li>
+        <li>
+            엘리먼트 다루기: <br>
+            엘리먼트 선택자, 클래스, attribute, style, text content, element 주입</li>
+        <li>이벤트와  이벤트 다루기</li>
+    </ol> -->
+
+    <!-- <h1>1. window 객체</h1>
+
+    <script>
+        // window객체
+        // 웹개발을 위한 도구모음
+        // console.log(window);
+
+        // alert 메시지 창을 띄운다
+        // console.log(window.alert);
+        // window.alert('hello');
+
+        // navigator.geolocation 접속 기기의 위치를 리턴한다.
+        // 위치기반앱 
+        // console.log(window.navigator.geolocation);
+
+        // history 유저의 페이지 탐색기록을 저장하고 관리하는 속성
+        // 앱 내에서 뒤로가기 버튼 등을 개발할 때 사용
+        // console.log(window.history);
+
+        // 쿠키, 로컬스토리지 : 브라우저의 저장공간
+        // 예) 로그인 토큰, 테마, 쇼핑 카트
+        // console.log(document.cookie);       // 쿠키
+        // console.log(window.localStorage);   // 쿠키의  대체제 (쿠키의 다음 버전> 업그레이드 버전)
+
+        // 서버에 데이터를 요청하는 메서드
+        // 예) AJAX 비동기 요청.( 페이지를 새로고침 없이 서버에 요청을 전송할 수 있는 기술)
+        // console.log(window.XMLHttpRequest)
+        // console.log(window.fetch)       // 최근에 출시
+
+        // document 속성을 이용해서 뷰를 개발한다
+        // console.log(window.document);       // HTML 문서
+    </script>     -->
+
+    <!-- <h1>2. 엘리먼트 다루기</h1>
+    <p>엘리먼트 선택자</p>
+
+    <ul>
+        <li id="foo" class="item">foo</li>
+        <li class="item">bar</li>
+        <li class="item">baz</li>
+    </ul> -->
+
+    <!-- <script>
+
+        // 태그 이름으로 선택하는 법
+
+        // querySelector : 태그 이름으로된 첫번째 하나만 선택한다.
+        // querySelectorAll : 태그 이름으로된 모든 태그를 선택한다.
+        // let ul = document.querySelector('ul');
+        // let li = document.querySelectorAll('li');
+
+        // console.log(ul);    // ul 엘리먼트
+        // console.log(li);    // NodeList(length)
+        // console.log(li[0]);     // foo 
+        // console.log(li[1]);     // bar
+        // console.log(li[2]);     // baz
+        // console.log(li.length)  // 3
+
+
+        // =======================================
+
+        //  클래스 이름으로 선택하기
+        // getElementsByClassName() 속성 사용
+        // const li = document.getElementsByClassName('item');
+        // console.log(li);    // HTMLCollection(length);
+        // console.log(li[0])  // foo
+        // console.log(li.length)  // 3
+
+        // querySelectorAll(.클래스명) 인자에 따라서 다양하게 사용
+        // const li = document.querySelectorAll('.item');
+        // console.log(li);    // NodeList(length)
+
+        // =========================================
+
+        // id로 선택하기
+        // getElementById() 속성 사용
+        // const foo = document.getElementById('foo');
+        // console.log(foo);
+
+        // querySelector(#id명) 아이디로 엘리먼트를 선택하여 사용할 수 있다.
+        // const foo = document.querySelector('#foo');
+        // console.log(foo);
+
+        // ===========================================
+
+        // 자식선택자
+
+        // const ul = document.querySelector('ul');
+        // console.log(ul);
+        // console.log(ul.children)    // HTMLCollection(length)
+        // console.log(ul.children[0])     // foo
+        // console.log(ul.firstElementChild)   // foo  첫번째
+        // console.log(ul.lastElementChild)    // baz  마지막
+
+        // ================================================
+
+        // 형제 선택자
+
+        // const foo = document.getElementById('foo')
+        // console.log(foo)
+        // // nextElementSibling같은 레벨에서 바로 다음으로 오는 엘리먼트
+        // console.log(foo.nextElementSibling)     
+
+        
+        
+        
+    </script> -->
+    
+    <!-- ================================================ -->
+
+<!-- <h1>Q. 엘리먼트 선택자</h1>
+<p>Beer table</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Origin</th>
+            <th>available</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="irishBeer" class="beer">
+            <td>Guinness</td>
+            <td>Ireland</td>
+            <td>No</td>
+        </tr>
+        <tr id="dutchBeer" class="beer">
+            <td>Heineken</td>
+            <td>Netherlands</td>
+            <td>Yes</td>
+        </tr>
+        <tr id="koreanBeer" class="beer">
+            <td>Kloud</td>
+            <td>S.Korea</td>
+            <td>Yes</td>
+        </tr>
+    </tbody>
+</table> -->
+
+<!-- <script>
+    // Q1. 클래스 이름으로 모든 행을 선택해보세요
+    // 변수명 : beers
+    
+    // let beers, koreanBeer, dutchBeer, irishBeer, irishBeerName;
+
+    // beers = document.getElementsByClassName("beer")
+    // document.querySelectorAll('.beer')
+    // console.log(beers)
+
+
+    const beers = document.getElementsByClassName('beer')
+    console.log(beers)
+
+    // Q2. id로 각 행을 선택해보세요
+    // 변수명 : irishBeer, dutchBeer, koreanBeer
+
+    // koreanBeer = document.getElementById("koreanBeer");
+    // dutchBeer = document.getElementById("dutchBeer");
+    // irishBeer = document.getElementById("irishBeer");
+
+    // document.querySelector('#irishBeer')
+
+
+    const irishBeer = document.getElementById('irishBeer')
+    const dutchBeer = document.getElementById('dutchBeer')
+    const koreanBeer = document.getElementById('koreanBeer')
+    console.log(irishBeer)
+    console.log(dutchBeer)
+    console.log(koreanBeer);
+
+
+    // Q3. 자식선택자로 특정한 td(아일랜드 맥주 이름)를 선택해보세요
+    // 변수명 : irishBeerName
+
+    // irishBeerName = irishBeer.firstChild;
+    // irishBeerName = irishBeer.children[0]
+    // console.log(irishBeerName)
+
+    const irishBeerName = document.querySelector('td')
+    console.log(irishBeerName.firstChild)
+
+    
+</script> -->
+
+<!-- ============================================================================= -->
+
+
+    <!-- <h1>2. 엘리먼트 다루기</h1>
+    <p>class 속성 다루기</p>
+
+    <ul>
+        <li id="foo" class="class1 class2">foo</li>
+        <li>bar</li>
+        <li>baz</li>
+    </ul>
+
+    <script>
+        
+        // 클래스 추가, 제거
+
+        // window 객체에 접근 할떄 window.document 지만, window 생략 하고 document만 들어가도 괜찮다.
+        const foo = document.getElementById('foo')
+        // 추가 1
+        // console.log(foo.className);
+        // foo.className += ' class3'      // 클래스명 추가를 할 수 있다
+        
+        // 추가 2
+        console.log(foo.classList);         // DOMTokenList(length)
+        foo.classList.add('class3')
+
+        // 제거
+        foo.classList.remove('class3')
+
+    </script> -->
+
+<!-- ========================================================================================== -->
+
+    <!-- <h1>2. 엘리먼트 다루기</h1>
+    <p>attribute 속성 다루기</p>
+
+    <ul>
+        <li><a id="foo" href="Foo">Foo</a></li>
+        <li><img id="bar" src="" alt="Bar"></li>
+        <li><input id="baz" type="text" value="Baz"></li>
+    </ul>
+
+    <script>
+        const foo = document.getElementById("foo");
+        const bar = document.getElementById("bar");
+        const baz = document.getElementById("baz");
+
+        // console.log(foo)    // a
+        // console.log(bar)    // img
+        // console.log(baz)    // input
+
+        // console.log(foo.href)    //Foo
+        // console.log(bar.alt)     //Bar
+        // console.log(baz.value)   //Baz
+
+        // attribute 수정
+        // foo.href = "FOO"
+        // bar.alt = 'BAR'
+        // baz.value = 'BAZ'
+
+        // console.log(foo.getAttribute('href'));
+        // console.log(bar.getAttribute('alt'));
+        // console.log(baz.getAttribute('value'));
+
+        // attribute 수정하기
+        // foo.setAttribute('href', 'FOO')
+        // bar.setAttribute('alt', 'BAR')
+        // baz.setAttribute('value', 'BAZ')
+    </script> -->
+
+    <!-- ======================================================== -->
+
+    <!-- <h1>2. 엘리먼트 다루기</h1>
+    <p>style 속성 다루기</p>
+
+    <ul>
+        <li>foo</li>
+        <li>bar</li>
+        <li>baz</li>
+    </ul>
+
+    <script>
+        const ul = document.querySelector("ul");
+        const li = document.querySelectorAll("li");
+
+        console.log(ul.style)   // CSSStyleDeclaration
+        console.log(ul.style.border)    // ""
+
+        ul.style.border = '1px solid';
+        li[0].style.textDecoration = 'underline';
+    </script> -->
+
+    <!-- ================================================================= -->
+
+    <!-- <h1>2. 엘리먼트 다루기</h1>
+    <p>text content</p>
+
+    <ul>
+        <li id="foo">foo</li>
+        <li>bar</li>
+        <li>baz</li>
+    </ul>
+
+    <script>
+        // 이벤트 사용으로 유저가 텍스트를 클릭하면 텍스트가 바뀌는 등..으로 사용할수있다.
+
+        const foo = document.getElementById('foo')
+        // innerHTML 텍스트컨텐츠에 접근을 하수있다.
+        console.log(foo.innerHTML);         // foo
+
+        // text content 업데이트
+        foo.innerHTML = 'FOO';
+
+    </script> -->
+
+    <!-- ============================================================ -->
+<!-- 
+    <h1>2. 엘리먼트 다루기</h1>
+    <p>엘리먼트 주입/만들기</p>
+
+    <ul>
+        <li>foo</li>
+        <li>bar</li>
+    </ul>
+
+    <script>
+        const ul = document.querySelector('ul')
+
+        let li = document.createElement('li')
+
+        // createElement('') 엘리먼트를 만들때 사용하는 속성 () 안에 만들 엘리먼트르 입력
+        console.log(li);    // li엘리먼트를 만들었다.
+        li.innerHTML = 'baz';       
+        console.log(li);
+        // element1.appendChild(element2): element2를 element1의 마지막 child로 추가한다
+        ul.appendChild(li);
+    </script> -->
+
+    <!-- ======================================================================= -->
+
+    <!-- <h1>Q. 엘리먼트 다루기</h1>
+    <p>Beers</p>
+
+    <ul></ul>
+
+    <script>
+        const beers = ['Guinness', 'Heineken', 'Budwiser'];
+
+        // 반복문을 사용해서 
+        // 각 맥주의 이름을 리스트아이템으로 출력해보세요.
+        
+        let ul = document.querySelector('ul');
+        for(let i=0;i<beers.length;i++){
+            li = document.createElement('li')
+            li.innerHTML = beers[i];
+            ul.appendChild(li);
+        }
+
+    </script> -->
+
+    
+</body>
+</html>
