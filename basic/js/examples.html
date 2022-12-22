@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>Accordion</h1>
+
+    <style>
+        button {
+            padding: 0.5rem;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            border-top: 1px solid #ddd;
+        }
+        button::after{
+            content: '+';
+            float: right;
+            transition: 0.2s;
+        }
+        .item {
+            overflow-y: hidden;
+            transition: 0.2s;
+        }
+        .item p {
+            margin: 0;
+            padding: 1rem;
+        }
+        button.active::after{
+            transform: rotate(45deg);
+        }
+        .max-h-0{
+            max-height: 0;
+        }
+        .max-h-40{
+            max-height: 10rem;
+        }
+    </style>
+
+    <div class="container">
+        <button onclick="f(this)">Tab 1</button>
+        <div class="item max-h-0">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus fuga sit sint ullam dolores error animi laborum, eos consectetur adipisci unde tempore soluta natus odit aspernatur consequatur quaerat consequuntur velit?</p>
+        </div>
+    </div>
+    <div class="container">
+        <button onclick="f(this)">Tab 2</button>
+        <div class="item max-h-0">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus fuga sit sint ullam dolores error animi laborum, eos consectetur adipisci unde tempore soluta natus odit aspernatur consequatur quaerat consequuntur velit?</p>
+        </div>
+    </div>
+    <div class="container">
+        <button onclick="f(this)">Tab 3</button>
+        <div class="item max-h-0">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus fuga sit sint ullam dolores error animi laborum, eos consectetur adipisci unde tempore soluta natus odit aspernatur consequatur quaerat consequuntur velit?</p>
+        </div>
+    </div>
+
+    <script>
+        function f(el) {
+            console.log(el);
+            const item = el.nextElementSibling;
+
+            // 클릭했을때 온이 되면 active 추가 
+            el.classList.toggle('active');
+            
+            // toggle : on / off 스위치 기능
+            // item.classList.toggle('max-h-0')
+            item.classList.toggle('max-h-40')
+        }
+    </script> -->
+
+
+    <!-- ============================================================= -->
+
+    <!-- <h1>Beers</h1>
+
+    <style>
+        button{
+            border: none;
+            background-color: transparent;
+            padding: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .active{
+            border-bottom: 2px solid;
+        }
+    </style>
+
+    <div class="">
+        <button id="default" onclick="f(event, 'b0')">Guinness</button>
+        <button onclick="f(event, 'b1')">Heineken</button>
+        <button onclick="f(event, 'b2')">Budwiser</button>
+    </div>
+
+    <div class="container">
+        <div id="b0" class="beer">
+            <h3>Guinness</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptatibus ratione quis quaerat ex ad, rerum explicabo doloribus facilis, odit quos accusamus magnam voluptates, vel reprehenderit delectus perferendis rem quidem!</p>
+        </div>
+        <div id="b1" class="beer">
+            <h3>Heineken</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptatibus ratione quis quaerat ex ad, rerum explicabo doloribus facilis, odit quos accusamus magnam voluptates, vel reprehenderit delectus perferendis rem quidem!</p>
+        </div>
+        <div id="b2" class="beer">
+            <h3>Budwiser</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptatibus ratione quis quaerat ex ad, rerum explicabo doloribus facilis, odit quos accusamus magnam voluptates, vel reprehenderit delectus perferendis rem quidem!</p>
+        </div>
+    </div>
+
+    <script>
+        function f(e ,id){
+            console.log(e) // event 객체
+            console.log(e.target) // 이벤트가 발생한 button
+            console.log(id)     
+
+            let beers = document.getElementsByClassName('beer');
+            // 모든 beer클래스를 안보이게 한다
+            for(let i=0; i<beers.length;i++){
+                beers[i].classList.add('hidden')
+                // id에 일치하는 beer만 보이게 한다
+                // 선택된 id만 hidden을 삭제
+                let beer = document.getElementById(id);
+                beer.classList.remove('hidden')
+            }
+            let buttons = document.querySelectorAll('button');
+            for (let i=0; i<buttons.length;i++){
+                buttons[i].classList.remove('active')
+            }
+            e.target.classList.add('active')
+            
+        }
+        // 페이지 처음 로드되었을 때 (새로고침) 클릭 실행한다.
+        // 등록된 id를 자동을 클릭한상태로 로드된다.
+        document.getElementById('default').click();
+    </script> -->
+
+    <!-- ========================================================================== -->
+
+    <!-- <style>
+        body{
+            min-height: 1000px;
+        }
+
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            backdrop-filter: blur(3px);
+        }
+        .container{
+            position: relative;
+        }
+        .container h3 {
+            text-align: center;
+            margin: 0;
+            padding: 1rem;
+        }
+        .container button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 2rem;
+            background-color: transparent;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        nav a {
+            display: block;
+            text-align: center;
+            padding: 0.5rem;
+            text-decoration: none;
+            border-top: 1px solid #ddd;
+            color: #555;
+        }
+        nav a:hover {
+            color: #000;
+        }
+        main {
+            padding-top: 3rem;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+
+    <header>
+        <div class="container">
+            <button>&#9776;</button>
+            <h3>Logo</h3>
+        </div>
+        <nav class="hidden">
+            <ul>
+                <li>
+                    <a href="">Link</a>
+                </li>
+                <li>
+                    <a href="">Link</a>
+                </li>
+                <li>
+                    <a href="">Link</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Top navigation</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod esse asperiores ducimus earum quis, eaque nihil quaerat aspernatur, officia obcaecati assumenda porro, nostrum quidem necessitatibus. Delectus maiores vel atque accusamus?</p>
+    </main>
+
+    <script>
+        const button = document.querySelector('button')
+        button.addEventListener('click', (e)=>{
+            let nav = document.querySelector('nav')
+            nav.classList.toggle('hidden')
+        })
+    </script> -->
+
+
+    <!-- =================================================================== -->
+
+    
+</body>
+</html>
