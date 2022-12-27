@@ -238,6 +238,350 @@
 
     <!-- =================================================================== -->
 
+    <!-- 2022-12-27 화요일 Flontend(JavaScritp) -->
+
+    <!-- 사이드바 이벤트 -->
+    <!-- <style>
+        header button {
+            font-size: 2rem;
+            background-color: transparent;
+            cursor: pointer;
+            border: none;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 15rem;
+            height: 100%;
+            background-color: #fff;
+            z-index: 1;
+            transition: 0.2s;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav h1 {
+            text-align: center;
+        }
+        nav a {
+            display: block;
+            padding: .75rem;
+            text-decoration: none;
+            color: #000;
+        }
+        nav a:hover {
+            background-color: #ddd;
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0 0 0 / 0.2);
+        }
+        .-left-60 {
+            left: -15rem;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <header>
+        <button>&#9776;</button>
+    </header>
+
+    <div class="container">
+        <nav class="-left-60">
+            <h1>Logo</h1>
+            <ul>
+                <li>
+                    <a href="">Link</a>
+                </li>
+                <li>
+                    <a href="">Link</a>
+                </li>
+                <li>
+                    <a href="">Link</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="overlay" class="hidden"></div>
+    </div>
+
+    <main>
+        <h1>Side Bar</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum minus, nulla tempora dignissimos iure earum ut saepe, pariatur soluta cupiditate tempore maxime incidunt doloremque temporibus unde voluptatibus assumenda placeat odio.</p>
+    </main>
+
+    <script>
+        let button = document.querySelector('button');
+        let nav = document.querySelector('nav');
+        let overlay = document.getElementById('overlay');
+
+        button.addEventListener('click', (e) => {
+            nav.classList.remove('-left-60');
+            overlay.classList.remove('hidden')
+        })
+        overlay.addEventListener('click', (e) => {
+            nav.classList.add('-left-60');
+            overlay.classList.add('hidden');
+        })
+
+    </script> -->
     
+    <!-- 모달 윈도우 -->
+
+    <!-- <style>
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0 0 0 / 0.2);
+        }
+        .container {
+            background-color: #fff;
+            width: 20rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 100px auto 0;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <h1>Modal</h1>
+    <button>Open Modal</button>
+
+    <div id="modal" class="hidden">
+        <div class="container">
+            <h1>Modal Content</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, minus error inventore provident obcaecati officiis rem et quos cupiditate laborum reprehenderit, aperiam consequuntur at sapiente veritatis cumque! Vel, animi voluptates?</p>
+        </div>
+    </div>
+
+    <script>
+        let button = document.querySelector('button')
+        let modal = document.getElementById('modal')
+
+        button.addEventListener('click', (e) => {
+            modal.classList.remove('hidden');
+        })
+        modal.addEventListener('click', (e) => {
+            // 이벤트 타깃이 모달일때 콜백이 실행.
+            // console.log(e.target);
+            if(e.target === modal){
+                modal.classList.add('hidden');
+            }
+
+        })
+    </script> -->
+
+<!-- =============================== -->
+
+    <!-- <style>
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0 0 0 / .2);
+        }
+        .cotainer {
+            background-color: #fff;
+            width: 20rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 100px auto 0;
+        }
+        span {
+            float: right;
+            cursor: pointer;
+        }
+        .hidden{
+            display: none;
+        }
+     
+    </style>
+
+    <h1>Q. Modal</h1>
+    <button>Open Modal</button>
+
+    <div id="modal" class="hidden">
+        <div class="cotainer">
+            <span>&times;</span>
+            <h1>Modal Content</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus reprehenderit accusantium illo rerum sapiente? Perferendis, quia quae? Doloremque cum, nostrum eaque quisquam fugit iure aliquam quibusdam sequi dolores, ea dicta?</p>
+        </div>
+    </div>
+    
+    <script>
+        let button = document.querySelector('button')
+        let modal = document.getElementById('modal')
+        let span = document.querySelector('span')
+        button.addEventListener('click', (e)=>{
+            modal.classList.remove('hidden')
+        })
+        
+        
+        modal.addEventListener('click', (e) =>{
+            // console.log(e.target);
+            if(e.target === modal || e.target === span){
+                modal.classList.add('hidden')
+            }
+        })
+    </script> -->
+
+
+    <!-- ===================================================== -->
+    
+    <!-- <h1>Form예제 : 유효성 검사</h1>
+
+    <style>
+        label{
+            display: block;
+            font-weight: bold;
+        }
+        input {
+            padding: 0.5rem;
+            width: 12rem;
+            outline: none;
+        }
+        .red {
+            color: red;
+        }
+    </style>
+
+
+    <form action="">
+        <label for="">User name</label>
+        <input type="text">
+        <p></p>
+    </form>
+
+    <script>
+        let input = document.querySelector('input')
+        let p = document.querySelector('p')
+
+
+        // keyup : 키보드를 입력했을때 이벤트
+        input.addEventListener('keyup', (e) => {
+            // e.target : input => 밸류엘리먼트 속성
+            // console.log(e.target.value)
+
+            // trim : 문자열 양옆의 여백을 제거
+            let value = e.target.value.trim();
+            let message;
+
+            // red클래스 추가
+            p.classList.add('red')
+
+            if(!value) {
+                message = '유저이름을 입력하세요'
+            }else if(value.length < 5) {
+                message = '유저이름이 너무 잛습니다'
+            }else {
+                // red 클래스 제거
+                p.classList.remove('red')
+                message = '사용가능한 유저이름입니다.'
+            }
+            p.innerHTML = message;
+        })
+    </script> -->
+
+
+    <!-- -------------두번째 예제 ----------------------- -->
+
+
+    <!-- <style>
+        form {
+            display: flex;
+            height: 2rem;
+        }
+        input {
+            width: 12rem;
+            padding: 0.5rem;
+        }
+        button{
+            border: none;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #222;
+        }
+    </style>
+
+    <h1>Newsletter</h1>
+    
+    <div id="container">
+        <form action="">
+            <input type="text" placeholder="bunny@example.com" required>
+            <button>구독하기</button>
+        </form>
+    </div>
+    
+    <script>
+        let container = document.getElementById('container')
+        let form = document.querySelector('form')
+
+        form.addEventListener('submit', (e) => {
+
+            /*
+                Event.preventDefault()
+                엘리먼트의 기본 기능을 실행하지 않는다
+                예) 폼을 제출하지 않음
+                유저가 입력한 값을 서버에 전달 하는게 폼의 기본 기능
+
+                AJAX 요청과 함께 사용된다.
+            */
+            e.preventDefault();
+            // 디폴트 이후 AJAX 요청을 하는게 보통.
+            container.innerHTML = '<h1>구독해주셔서 감사합니다.</h1>'
+            // innerHTML : 컨텐츠속성이다. 값에 태그 또 한 사용 가능하다.
+        })
+    </script> -->
+
+
+    <!-- -----------------문제 ------------------------------ -->
+    <!-- 각 input과 textarea에 내용이 없을 경우 alert메시지를 띄어보세요. (폼이 제출되어서는 안됨)-->
+    <!-- 폼이 제출되면 "빠른 시일내에 연락드리겠습니다." 메시지를 출력해보세요. -->
+
+
+    
+    <form action="">
+        <h1>Contact</h1>
+        <input type="text" placeholder="성함">
+        <input type="text" placeholder="이메일">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>제출</button>
+    </form>
+
+    <script>
+        let form = document.querySelector('form')
+        let input = document.querySelector('input')
+        let text = document.querySelector('textarea')
+        let button = document.querySelector('button')
+
+        input.addEventListener('keyup',(e) =>{
+            let value = e.target.value.trim();
+            let message;
+            if(!value){
+                message = '내용을 입력하세요'
+            }
+        })
+        alert(message)
+
+    </script>
 </body>
 </html>
