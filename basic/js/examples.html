@@ -557,31 +557,92 @@
     <!-- 각 input과 textarea에 내용이 없을 경우 alert메시지를 띄어보세요. (폼이 제출되어서는 안됨)-->
     <!-- 폼이 제출되면 "빠른 시일내에 연락드리겠습니다." 메시지를 출력해보세요. -->
 
+    <style>
+        #modal{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0 0 0 / .2);
+        }
+        .conainer{
+            background-color: #fff;
+            width: 20rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 100px auto 0;
+        }
+        span{
+            float: right;
+            cursor: pointer;
+        }
+        .hidden{
+            display: none;
+        }
+        input{
+            width: 100%;
+            height: 2rem;
+            border: 2px solid;
+            margin: 1px;
+        }
+        textarea {
+            width: 100%;
+            margin: 1px;
+        }
+        .bt {
+            width: 100%;
+            margin: 1px;
+            height: 2rem;
+        }
 
-    
-    <form action="">
-        <h1>Contact</h1>
-        <input type="text" placeholder="성함">
-        <input type="text" placeholder="이메일">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-        <button>제출</button>
-    </form>
-
+    </style>
+<button id="login">모달보내기</button>
+<div id="modal" class="hidden">
+    <form action="" class="conainer">
+    <span>&times;</span>
+    <h1>Contact</h1>
+    <input id="name" type="text" placeholder="성함">
+    <input id="email" type="text" placeholder="이메일">
+    <textarea name="" id="" cols="30" rows="10" placeholder="내용..."></textarea>
+    <button class="bt">보내기</button>
+</form>
+</div>
     <script>
-        let form = document.querySelector('form')
-        let input = document.querySelector('input')
-        let text = document.querySelector('textarea')
-        let button = document.querySelector('button')
+        let login = document.getElementById('login')
+        let modal = document.getElementById('modal')
+        let span = document.querySelector('span')
 
-        input.addEventListener('keyup',(e) =>{
-            let value = e.target.value.trim();
-            let message;
-            if(!value){
-                message = '내용을 입력하세요'
+        login.addEventListener('click', (e)=>{
+            modal.classList.remove('hidden')
+        })
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal || e.target === span){
+                modal.classList.add('hidden')
             }
         })
-        alert(message)
 
+        let form = document.querySelector('form')
+        let name = document.getElementById('name');
+        let email = document.getElementById('email');
+        let textarea = document.querySelector('textarea')
+
+        form.addEventListener('submit', (e) =>{
+            if(!name.value){
+                e.preventDefault();
+                alert('성함을 입력하세요.')
+            }else if (!email.value){
+                e.preventDefault();
+                alert('이메일을 입력하세요')
+            }else if(!textarea.value){
+                e.preventDefault();
+                alert('내용을 입력하세요')
+            }else{
+                e.preventDefault();
+                alert('빠른 시일내에 연락드리겠습니다.')
+            }
+        })
+        
     </script>
 </body>
 </html>
