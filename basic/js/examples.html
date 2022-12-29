@@ -552,97 +552,299 @@
         })
     </script> -->
 
+    <!-- ============ 2022 - 12 - 29 Flontend ================== -->
 
     <!-- -----------------문제 ------------------------------ -->
     <!-- 각 input과 textarea에 내용이 없을 경우 alert메시지를 띄어보세요. (폼이 제출되어서는 안됨)-->
     <!-- 폼이 제출되면 "빠른 시일내에 연락드리겠습니다." 메시지를 출력해보세요. -->
 
-    <style>
-        #modal{
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0 0 0 / .2);
-        }
-        .conainer{
-            background-color: #fff;
+    <!-- <style>
+
+        form{
             width: 20rem;
-            padding: 1rem;
-            border-radius: 1rem;
-            margin: 100px auto 0;
         }
-        span{
-            float: right;
+
+        input, textarea{
+            padding: .5rem;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        button{
+            padding: 0.5rem;
             cursor: pointer;
-        }
-        .hidden{
-            display: none;
-        }
-        input{
-            width: 100%;
-            height: 2rem;
-            border: 2px solid;
-            margin: 1px;
-        }
-        textarea {
-            width: 100%;
-            margin: 1px;
-        }
-        .bt {
-            width: 100%;
-            margin: 1px;
-            height: 2rem;
         }
 
     </style>
-<button id="login">모달보내기</button>
-<div id="modal" class="hidden">
-    <form action="" class="conainer">
-    <span>&times;</span>
-    <h1>Contact</h1>
-    <input id="name" type="text" placeholder="성함">
-    <input id="email" type="text" placeholder="이메일">
-    <textarea name="" id="" cols="30" rows="10" placeholder="내용..."></textarea>
-    <button class="bt">보내기</button>
-</form>
-</div>
-    <script>
-        let login = document.getElementById('login')
-        let modal = document.getElementById('modal')
-        let span = document.querySelector('span')
+    <div id="container">
+        <form action="" class="conainer">
+            <h1>Contact</h1>
+            <input type="text" placeholder="성함" name="name">
+            <input type="text" placeholder="이메일" name="email">
+            <textarea name="message" id="" cols="30" rows="10" placeholder="메시지..."></textarea>
+            <button class="bt">보내기</button>
+        </form>
+    </div> -->
 
-        login.addEventListener('click', (e)=>{
-            modal.classList.remove('hidden')
-        })
-        modal.addEventListener('click', (e) => {
-            if(e.target === modal || e.target === span){
-                modal.classList.add('hidden')
-            }
-        })
-
+    <!-- <script>
+        // 스스로 한것.
         let form = document.querySelector('form')
         let name = document.getElementById('name');
         let email = document.getElementById('email');
         let textarea = document.querySelector('textarea')
+        let container = document.getElementById('container')
 
         form.addEventListener('submit', (e) =>{
+            e.preventDefault();
             if(!name.value){
-                e.preventDefault();
                 alert('성함을 입력하세요.')
             }else if (!email.value){
-                e.preventDefault();
                 alert('이메일을 입력하세요')
             }else if(!textarea.value){
-                e.preventDefault();
-                alert('내용을 입력하세요')
+                alert('메시지을 입력하세요')
             }else{
-                e.preventDefault();
-                alert('빠른 시일내에 연락드리겠습니다.')
+                container.innerHTML = '<h1>빠른 시일내에 연락드리겠습니다.</h1>'
             }
         })
-        
+    </script> -->
+
+    <!-- <script>
+        let form = document.querySelector('form')
+        let container = document.getElementById('container')
+
+        // formData를 이용해서 name속성 값을받아서 사용
+        // form.addEventListener('submit', (e) =>{
+        //     e.preventDefault();
+        //     let formData = new FormData(form);
+        //     // console.log(formData.get('name'))
+        //     // console.log(formData.get('email'))
+        //     // console.log(formData.get('message'))
+
+        //     if(!formData.get('name')){
+        //         return alert('이름을 입력하세요')
+        //     }
+        //     else if(!formData.get('email')){
+        //         return alert('이메일을 입력하세요')
+        //     }
+        //     else if(!formData.get('message')){
+        //         return alert('메시지를 입력하세요.')
+        //     }
+        //     else {
+        //         container.innerHTML = '<h1>빠른 시일내에 연락드리겠습니다.</h1>'
+        //     }
+        // })
+
+        form.addEventListener('submit', (e) => {
+            try{
+                e.preventDefault();
+                let formData = new FormData(e.target);
+
+                if(!formData.get('name')){
+                    throw '이름을 입력하세요.'
+                }else if(!formData.get('email')){
+                    throw '이메일을 입력하세요.'
+                }else if(!formData.get('message')){
+                    throw '메시지를 입려하세요.'
+                }else{
+                    document.getElementById('container').innerHTML = '<h1>빠른 시일내에 연락드리겠습니다.</h1>'
+                }
+            } catch (err){
+                alert(err)
+            }
+        })
+    </script> -->
+
+<!-- ============================== -->
+
+    <!-- 이미지 선택 -->
+    <!-- <h1>Gallery</h1>
+
+    <style>
+        #main {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+        .container {
+            display: flex;
+        }
+        .container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+        .container img:hover {
+            opacity: 1;
+        }
+    </style>
+    <img src="img/bunny.jpg" alt="" id="main">
+
+    <div class="container">
+        <img src="img/bunny.jpg" alt="" onclick="f(this)">
+        <img src="img/cloud.jpg" alt="" onclick="f(this)">
+        <img src="img/fall.jpg" alt="" onclick="f(this)">
+    </div>
+
+    <script>
+        function f(el){
+            // console.log(el.src)
+            let main = document.getElementById('main')
+            main.src = el.src
+        }
+    </script> -->
+<!-- ================================ -->
+
+<!-- 이미지 모달 -->
+
+<!-- <style>
+    #modal {
+        position: fixed;
+        background-color: rgba(0 0 0 / .8);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    #main{
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+        margin: 100px auto 0;
+    }
+   .container {
+    display: flex;
+   }
+   .container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+   }
+   .hidden {
+    display: none;
+   }
+
+    </style>
+    <h1>Q. Modal Gallery</h1>
+    <div id="modal" class="hidden">
+        <img src="" alt="" id="main">
+    </div>
+    <div class="container">
+        <img src="img/team1.jpeg" alt="" onclick="f(this)">
+        <img src="img/team2.jpeg" alt="" onclick="f(this)">
+        <img src="img/team3.jpeg" alt="" onclick="f(this)">
+    </div>
+
+    <script>
+        let main = document.getElementById('main')
+        let modal = document.getElementById('modal')
+        function f(el){
+            modal.classList.remove('hidden')
+            main.src = el.src
+        }
+
+        // 모달에서 메인이미지가 아닌 부분을 클릭한 경우
+        modal.addEventListener('click', (e) => {
+            // console.log(e.target)
+            if(e.target === modal) {
+                modal.classList.add('hidden')
+            }
+        })
+    </script> -->
+
+
+
+    <!-- --------- 슬라이드 --------------- -->
+
+    <h1>Carousel</h1>
+
+    <style>
+        * {box-sizing: border-box;}
+        .wrap {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+        #container {
+            width: 200px;
+            height: 200px;
+            background-color: #ddd;
+            display: inline-flex;
+            transition: .2s;
+        }
+        .item {
+            width: inherit;
+            height: inherit;
+            border: 1px dashed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .hidden {
+            display: none;
+        }
+        .active {
+            color: #00f;
+        }
+    </style>
+
+    <div class="wrap">
+        <div id="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+        </div>
+    </div>
+    <div class="nav">
+        <button id="prev" class="hidden" onclick="f(-1)">&#10094;</button>
+        <button id="next" onclick="f(1)">&#10095</button>
+    </div>
+    <div class="indicator">
+        <span class="dot active">*</span>
+        <span class="dot">*</span>
+        <span class="dot">*</span>
+    </div>
+
+    <script>
+        let index = 0;
+        let container = document.getElementById('container')
+        let prev = document.getElementById('prev')
+        let next = document.getElementById('next')
+        let dots = document.querySelectorAll('.dot')
+
+        // console.log(dots) // NodeList
+        function f(data) {
+            index += data;
+            console.log(index)
+            
+            // # 이미지 이동
+            container.style.transform = `translateX(-${index*200}px`;
+
+            if(index === 0){
+                // # 이전 버튼
+                prev.classList.add('hidden')
+            }else if(index === 2){
+                // # 다음 버튼
+                next.classList.add('hidden')
+            }
+            else{
+                // # 버튼이 다시 나타나게 한다.
+                prev.classList.remove('hidden')
+                next.classList.remove('hidden')
+            }
+            // 이미지가 많을 경우 이미지의 렝스 속성을 사용
+            
+            // # Indicator
+            for (let dot of dots) {
+                // 모든 dot엘리먼트에 active를 제거
+                dot.classList.remove('active')
+            }
+            dots[index].classList.add('active')
+        }
     </script>
 </body>
 </html>
