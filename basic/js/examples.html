@@ -758,7 +758,7 @@
 
     <!-- --------- 슬라이드 --------------- -->
 
-    <h1>Carousel</h1>
+    <!-- <h1>Carousel</h1>
 
     <style>
         * {box-sizing: border-box;}
@@ -766,22 +766,44 @@
             width: 200px;
             height: 200px;
             overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 0 50px #888;
         }
         #container {
             width: 200px;
             height: 200px;
-            background-color: #ddd;
             display: inline-flex;
             transition: .2s;
         }
         .item {
             width: inherit;
             height: inherit;
-            border: 1px dashed;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-shrink: 0;
+        }
+        .nav button {
+            position: absolute;
+            height: 100%;
+            border: none;
+            background-color: transparent;
+        }
+        .nav #prev {
+            top: 0;
+            left: 0;
+        }
+        .nav #next {
+            top: 0;
+            right: 0;
+        }
+        .indicator {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
         }
         .hidden {
             display: none;
@@ -797,15 +819,17 @@
             <div class="item">2</div>
             <div class="item">3</div>
         </div>
-    </div>
-    <div class="nav">
-        <button id="prev" class="hidden" onclick="f(-1)">&#10094;</button>
-        <button id="next" onclick="f(1)">&#10095</button>
-    </div>
-    <div class="indicator">
-        <span class="dot active">*</span>
-        <span class="dot">*</span>
-        <span class="dot">*</span>
+
+        <div class="nav">
+            <button id="prev" class="hidden" onclick="f(-1)">&#10094;</button>
+            <button id="next" onclick="f(1)">&#10095</button>
+        </div>
+
+        <div class="indicator">
+            <span class="dot active">*</span>
+            <span class="dot">*</span>
+            <span class="dot">*</span>
+        </div>
     </div>
 
     <script>
@@ -844,6 +868,183 @@
             }
             dots[index].classList.add('active')
         }
-    </script>
+    </script> -->
+
+    <!-- =============== 22.12.30 금요일 Flontend ======== -->
+
+    
+    <!-- <h1>Q. Autoo Carousel</h1>
+
+    <style>
+        *{box-sizing: border-box;}
+        .container{
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        .item{
+            width: inherit;
+            height: inherit;
+        }
+        .item img{
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+        }
+        .indicator{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .indicator .dot{
+            color: #888;
+        }
+        .indicator .active{
+            color: red;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+   <div class="container">
+    <div class="item">
+        <img src="img/dog01.jpg" alt="">
+    </div>
+    <div class="item hidden">
+        <img src="img/dog02.jpg" alt="">
+    </div>
+    <div class="item hidden">
+        <img src="img/dog03.jpg" alt="">
+    </div>
+
+    <div class="indicator">
+        <span class="dot active">*</span>
+        <span class="dot">*</span>
+        <span class="dot">*</span>
+    </div>
+   </div>
+   
+
+    <script>
+        // display 속성 (block, none)을 사용해서
+        // traslate 속성 사용이 아닙니다.
+        let index = 0;
+        let items = document.querySelectorAll('.item')
+        let dots = document.querySelectorAll('.dot')
+
+        console.log(items)
+        // *초마다 콜백값 실행
+        // ms간격으로 callback을 실행한다
+        // 1000ms = 1초
+        setInterval(f, 3000);
+        function f(){
+            index += 1;
+            if(index===items.length){
+                index = 0;
+            }
+            console.log(index)
+
+            // # 이미지
+            for (let item of items){
+                item.classList.add('hidden')
+            }
+            items[index].classList.remove('hidden')
+            
+            // # Indicator
+            for (let dot of dots){
+                dot.classList.remove('active')
+            }
+            dots[index].classList.add('active')
+        }
+    </script> -->
+
+    <!-- ------------------ 기타 예제 --------------------- -->
+
+    <!-- <h1>Drag and Drop</h1>
+    <style>
+    #drop_zone {
+        border: 4px dashed #888;
+        width: 200px;
+        height: 100px;
+        padding: 1rem;
+    }
+    </style>
+
+    <div id="container">
+        <div id="drop_zone">
+            <p><i>여기</i>에 파일을 드래그 앤 드랍 하세요</p>
+        </div>
+    </div>
+
+    <script>
+
+        let dropZone = document.getElementById('drop_zone');
+
+            // 드래그오버 : 파일을 엘리먼트 내에서 드래그할때마다 (x,y축이 변할때마다)실행되는 이벤트
+        dropZone.addEventListener('dragover', dragOverHandler);
+        dropZone.addEventListener('drop', dropHandler);
+
+        function dropHandler(e){
+            e.preventDefault();         // 브라우저가 파일을 열지 않음 ( 기본 기능을 실행 하지 않음)
+            console.log('드랍되었습니다.');
+            console.log(e.dataTransfer.files);
+            let files = Array.from(e.dataTransfer.files);   // array로 전환
+            for(let file of files){
+                console.log(file.name);
+            }
+
+            // ..... 서버에 제출
+
+            document.getElementById('container').innerHTML = '<h1>제출되었습니다.</h1>'
+        }
+
+        function dragOverHandler(e){
+            console.log('드래그 중 입니다.');
+            e.preventDefault();     // 브라우저가 파일을 열지 않음 ( 기본 기능을 하지 않음)
+        }
+    </script> -->
+
+    <!-- -----------스크롤 내렸을때 top버튼으로 최상단으로 올리기 ----------------- -->
+
+    <!-- <style>
+        html {scroll-behavior: smooth;}
+        body {
+            min-height: 1000px;
+        }
+        button {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+    <h1>Top button</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo expedita asperiores, eaque officiis totam tempore animi temporibus saepe aspernatur voluptate tempora dolor aperiam, quas ducimus ipsa iure nemo cupiditate hic?</p>
+    <button class="hidden">Top</button>
+
+    <script>
+
+        let button = document.querySelector('button')
+
+        window.addEventListener('scroll', (e) => {
+            console.log(document.documentElement.scrollTop)
+            // 스크롤바의 끝과끝의 값
+            if(document.documentElement.scrollTop < 200){
+                button.classList.add('hidden')
+            }else {
+                button.classList.remove('hidden')
+            }
+        })
+        button.addEventListener('click', (e) => {
+            document.documentElement.scrollTop = 0;
+        })
+    </script> -->
+
+
+
 </body>
 </html>
