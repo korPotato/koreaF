@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Tailwindcss cdn -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <!-- Custom scc -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <button>&#9776;</button>
+            <h3>World Beer</h3>
+        </div>
+        <nav class="hidden">
+            <ul>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="beer-container bbc">
+        <h1>Tab Contents</h1>
+        <button id="default"  onclick="f(event, 'b0')" class="beer-1">Guinness</button>
+        <button onclick="f(event, 'b1')" class="beer-1">Heineken</button>
+        <button onclick="f(event, 'b2')" class="beer-1">Budwiser</button>
+    </div>
+
+    <div>
+        <div id="b0" class="beer">
+            <h3>Guinness</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptatibus ratione quis quaerat ex ad, rerum explicabo doloribus facilis, odit quos accusamus magnam voluptates, vel reprehenderit delectus perferendis rem quidem!</p>
+        </div>
+        <div id="b1" class="beer">
+            <h3>Heineken</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptatibus ratione quis quaerat ex ad, rerum explicabo doloribus facilis, odit quos accusamus magnam voluptates, vel reprehenderit delectus perferendis rem quidem!</p>
+        </div>
+        <div id="b2" class="beer">
+            <h3>Budwiser</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptatibus ratione quis quaerat ex ad, rerum explicabo doloribus facilis, odit quos accusamus magnam voluptates, vel reprehenderit delectus perferendis rem quidem!</p>
+        </div>
+    </div>
+
+    <h1>Modal</h1>
+    <button class="open">Open</button>
+    <div class="hidden" id="modal">
+        <div class="modal-container">
+            <h3>Beer</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error eius accusantium sint, corporis neque nam ullam eligendi? Odit ullam dolor natus molestiae eos doloremque, quia accusamus sed nisi suscipit sunt?</p>
+        </div>
+    </div>
+
+
+    <h1>Accordion</h1>
+    <div class="ac-container">
+        <button onclick="b(this)" class="ac-button">Guinness</button>
+        <div class="item max-h-0">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus fuga sit sint ullam dolores error animi laborum, eos consectetur adipisci unde tempore soluta natus odit aspernatur consequatur quaerat consequuntur velit?</p>
+        </div>
+    </div>
+    <div class="ac-container">
+        <button onclick="b(this)" class="ac-button">Heineken</button>
+        <div class="item max-h-0">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus fuga sit sint ullam dolores error animi laborum, eos consectetur adipisci unde tempore soluta natus odit aspernatur consequatur quaerat consequuntur velit?</p>
+        </div>
+    </div>
+    <div class="ac-container">
+        <button onclick="b(this)" class="ac-button">Budwiser</button>
+        <div class="item max-h-0">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus fuga sit sint ullam dolores error animi laborum, eos consectetur adipisci unde tempore soluta natus odit aspernatur consequatur quaerat consequuntur velit?</p>
+        </div>
+    </div>
+
+    <h1>Newsletter</h1>
+    <div class="new-container">
+        <form action="" class="form-1">
+            <input type="text">
+            <button>구독하기</button>
+        </form>
+    </div>
+
+
+
+    
+    <script src="test.js"></script>
+</body>
+</html>
