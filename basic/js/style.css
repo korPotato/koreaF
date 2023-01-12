@@ -17,7 +17,7 @@ header .container {
 header .container h3 {
     margin: 0;
     padding: 1rem;
-    text-align: center;
+    margin-left: 2rem;
 }
 header .container button {
     position: absolute;
