@@ -1,4 +1,5 @@
-import React from "react";
+import React, {createContext, useContext, useState} from "react";
+
 
 export default App;
 
@@ -489,3 +490,271 @@ export default App;
 //     </>
 //   )
 // }
+
+// -------------------2023.01.19 frontend ---------------
+
+// const profile = {
+//   username: '냥냥냥',
+//   image: 'https://mblogthumb-phinf.pstatic.net/MjAyMDA0MjNfMTEz/MDAxNTg3NjA5OTQyOTUy.CPtAxRasQSpzpDyzacFrLR0-xxs0JgztEajPD2WpaM8g.5LUh5v-9Z_fYCmy5n56kkIwlVoxnTOORCGtNBoi_OKwg.PNG.africaamc/25772472187_89bbf29b6f_o.png?type=w800',
+//   bio: '안녕하세요 여러봉구, 냥 입니다'
+// };
+// const accounts = [
+//   { id: 's0', username: '냥아치패밀리 공식계정' },
+//   { id: 's1', username: '냥아치패밀리 김냥이' },
+//   { id: 's2', username: '인싸 김고양' }
+// ];
+// const articles = [
+//   { id: 'a0', title: '시그니처 액체괴물' },
+//   { id: 'a1', title: '어떤 통이든 들어갈 수 있어요~' }
+// ];
+
+// function App() {
+//   return (
+//     <>
+//       <h1>Instagram</h1>
+//       <Profile profile={profile} />
+//       <Suggested accounts={accounts} />
+//       <Timeline articles={articles} />
+//     </>
+//   )
+// }
+
+// function Profile(props) {
+//   console.log(props.profile)
+//   return (
+//     <>
+//       <img src={profile.image}
+//         alt="고양이상"
+//         width="100%"
+//         style={{
+//           width: '100px',
+//           height: "100px",
+//           objectFit: 'cover',
+//           borderRadius: '50%'
+//         }}
+//       />
+//       <h2>{profile.username}</h2>
+//       <p>{profile.bio}</p>
+//     </>
+//   )
+// }
+// function Suggested(props) {
+//   console.log(props.accounts)
+//   return (
+//     <>
+//       <h2>Suggested</h2>
+//       <ul>
+//         {accounts.map(accountss => (
+//           <li key={accountss.id}>{accountss.username}</li>
+//         ))}
+//       </ul>
+//     </>
+//   )
+// }
+// function Timeline(props) {
+//   console.log(props.articles)
+//   return (
+//     <>
+//       <h2>Timeline</h2>
+//       <ul>
+//         {articles.map(articless => (
+//           <li key={articless.id}>{articless.title}</li>
+//         ))}
+//       </ul>
+//     </>
+
+//   )
+// }
+
+/*
+
+3. children props
+
+- 컴포넌트에 자식 컴포넌트를 추가한다.
+*/
+
+// function App(){
+//   return (
+//     <Layout>
+//       <Article />
+//     </Layout>
+//   )
+// }
+
+// function Layout(props){
+
+//   return (
+//     <>
+//       <h1>Instagram</h1>
+//       <nav>
+//         <ul>
+//           <li>홈</li>
+//           <li>소개</li>
+//           <li>게시물</li>
+//         </ul>
+//       </nav>
+
+//       {props.children}
+//     </>
+//   )
+// }
+// function Article() {
+//   return (
+//     <>
+//       <img 
+//         src="https://img.animalplanet.co.kr/news/2019/10/26/700/br80gkon0x827c68s9u9.jpg"
+//         alt="냥아치"
+//         width="100%"
+//       />
+//       <p>
+//         <b>danaka</b>
+//         냥아치가 강아지를 떄렸어요^00^
+//       </p>
+//       <small>1일 전</small>
+//     </>
+//   )
+// }
+
+/*
+  4. useContext Hook
+    - children 컴포넌트에 데이터를 전달하는 Hook이다
+*/
+// const AuthContext = createContext();
+
+// function App() {
+//   return (
+//     <AuthProvider>
+//       <Layout>
+//         <Article />
+//       </Layout>
+//     </AuthProvider>
+//   )
+// }
+
+// function AuthProvider(props){
+
+//   const value = {username: 'bunny'};
+
+//   return (
+//     <AuthContext.Provider value={value}>
+//       {props.children}
+//     </AuthContext.Provider>
+//   )
+// }
+
+
+// function Layout(props){
+//   const auth = useContext(AuthContext);
+//   console.log(auth)
+//   return (
+//     <>
+//       <h1>Instagram</h1>
+//       <nav>
+//         <ul>
+//           <li>홈</li>
+//           <li>소개</li>
+//           <li>게시물</li>
+//         </ul>
+//       </nav>
+//       <p>안녕하세요 {auth.username}</p>
+//       {props.children}
+//     </>
+//   )
+// }
+// function Article() {
+//   const auth = useContext(AuthContext);
+//   console.log(auth)
+//   return (
+//     <>
+//       <img 
+//         src="https://img.animalplanet.co.kr/news/2019/10/26/700/br80gkon0x827c68s9u9.jpg"
+//         alt="냥아치"
+//         width="100%"
+//       />
+//       <p>
+//         <b>{auth.username}</b>
+//         냥아치가 강아지를 떄렸어요^00^
+//       </p>
+//       <small>1일 전</small>
+//     </>
+//   )
+// }
+
+
+// function App(){
+//   function handleClick(e) {
+//     alert('lol');
+//   }
+//   return (
+//     <>
+//       <h1>Basic</h1>
+//       {/* onEventName=eventHandler */}
+//       <button onClick={handleClick}>Button</button>
+//     </>
+//   )
+// }
+
+/*
+  리액트에서 HTML 업데이트하기
+*/
+
+// function App(){
+
+// /*
+//   const [state, setState (구조물의할당)]=useState(initialValue,초기값);
+
+//   state: 컴포넌트내에서 관리되는 변수
+//   setState: state를 업데이트하는 메서드
+//   initialValue: state의 초기값
+
+// */
+
+
+//   const [count, setCount] = useState(0);
+
+//   return(
+//     <>
+//       <h1>Count</h1>
+//       <p>{count}</p>
+//       <button onClick={() => setCount(count +1)}>Add</button>
+//     </>
+//   )
+// }
+
+
+// function App(){
+//   let count = 0;
+
+//   console.log(count)
+// /*
+//   HTML를 업데이트 하기 위해서는 DOM을 다시 리턴해야한다
+//   DOM을 다시 리턴 하기 위해서는 컴포넌트를 다시 실행해야 한다.
+//   setState는 컴포넌트를 다시 실행한다.
+//   즉, HTML이 업데이트된다.
+// */
+//   function handleClick(e){
+//     count++;
+
+//   }
+//   return (
+//     <>
+//       <h1>Count</h1>
+//       <p>{count}</p>
+//       <button onClick={handleClick}>Add</button>
+//     </>
+//   )
+// }
+
+
+function App(){
+
+  const [subscribed, setSubscribed] = useState(false);
+  console.log(subscribed)
+  
+  return(
+    <>
+      <h1>구독버튼</h1>
+      <button onClick={()=> setSubscribed(!subscribed)}>{subscribed ? "구독취소" : "구독하기"}</button>
+    </>
+  )
+}
