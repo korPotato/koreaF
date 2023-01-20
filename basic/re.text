@@ -16,3 +16,11 @@ npm start 실행'
 
 컴포넌트를 만들경우
 첫 글자가 대문자로 해야 컴포넌트로 인식을 한다.
+
+
+라우터는 새로운 패키지가 필요함.
+
+npm install react-router-dom
+
+- npm install + 설치할 패키지 이름
+

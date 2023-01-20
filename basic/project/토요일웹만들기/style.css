@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+* {
+    box-sizing: border-box !important;
+    font-family: 'Noto Sans KR', sans-serif;
+    outline: none;
+    color: #212121;
+}
+
+html {
+    font-size: 13px;
+}
+body {
+    margin: 0;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    margin: 0;
+}
+dl, dt, dd {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+button,a,i,span{
+    cursor: pointer;
+}
+
+/* 헤더 영역 시작*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 15px 13px;
+    border-bottom: 1px solid #e6e6e6;
+}
+header .left {
+    width: 30%;
+}
+header > a > img{
+    height: 34px;
+}
+header .left .xi-bars {
+    border: 0;
+    /* margin-right: 22px; */
+    background-color: transparent;
+    font-size: 2.5rem;
+}
+header .left .xi-search {
+    border: 0;
+    background-color: transparent;
+    font-size: 2rem;
+}
+
+header .right {
+    width: 30%;
+    display: flex;
+    justify-content: right;
+}
+
+header .right .xi-user-o {
+    border: 0;
+    background-color: transparent;
+    font-size: 2.2rem;
+}
+header .right .xi-cart-o {
+    border: 0;
+    background-color: transparent;
+    font-size: 2.2rem;
+    margin-left: 15px;
+}
+header .right .cart_cnt {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    background-color: #8769f0;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+/* 헤더 영역 종료 */
+
+/* 메뉴바1 시작 */
+
+nav {
+    display: flex;
+    background: #ffffff;
+    overflow-x: hidden;
+}
+nav > a{
+    width: calc(100%/4);
+    text-align: center;
+    color: #494949;
+    font-size: 13px;
+    padding: 12px;
+}
+
+/* 메뉴바1 종료 */
