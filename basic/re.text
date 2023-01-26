@@ -24,3 +24,23 @@ npm install react-router-dom
 
 - npm install + 설치할 패키지 이름
 
+
+tailwindcss create-react-app
+
+1. 테일윈드css 설치
+npm install -D tailwindcss
+
+2. 테일윈드콘피그제이에스 파일생성
+npx tailwindcss init
+
+3. 경로 파일에 모든 템플릿 파일에 대한 경로를 추가함.
+생성된 파일 안에서 
+content 괄호 안에 "./src/**/*.{js,jsx,ts,tsx}", 입력
+
+4. CSS에 Tailwind 지시문 추가
+@tailwindTailwind의 각 레이어에 대한 지시문을 파일에 추가 합니다. ./src/index.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

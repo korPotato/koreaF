@@ -1108,3 +1108,151 @@ export default App;
 //   )
 // }
 
+const initialTasks = [
+  { id: "todo-0", name: "Eat", completed: true },
+  { id: "todo-1", name: "Sleep", completed: false },
+  { id: "todo-2", name: "Repeat", completed: false }
+];
+
+const FILTER_MAP = {
+  All: () => true,
+  Done: task => task.completed,
+  Active: task => !task.completed
+}
+const FILTER_NAMES = Object.keys(FILTER_MAP); // Object.keys 객체속성문자열로 나타낸다
+console.log(FILTER_NAMES)
+
+function App() {
+  const [tasks, setTasks] = useState(initialTasks);
+  // tasks추적하기 
+  console.log(tasks);
+
+  function addTask(name) {
+    const newTask = {
+      id: `todo-${Math.random()}`,
+      // name:name, = name, 으로 줄여서 사용 가능
+      name,
+      completed: false
+    }
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks)
+  }
+
+  function deleteTask(id) {
+    console.log(id)
+
+    const remainingTasks = tasks.filter(task => task.id !== id)
+
+    setTasks(remainingTasks)
+  }
+
+  function toggleTaskCompleted(id) {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed }
+      }
+      return task;
+    })
+    console.log(updatedTasks)
+    setTasks(updatedTasks)
+  }
+
+  const filterButton = FILTER_NAMES.map(name => (
+    <FilterButton
+    key={name}
+    name={name}
+    />
+  ))
+
+  const taskList = tasks.map(task => (
+
+    <Todo
+      key={task.id}
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      deleteTask={deleteTask}
+      toggleTaskCompleted={toggleTaskCompleted}
+    />
+  ))
+
+  return (
+    <div className="max-w-sm mx-auto mt-8 border p-4">
+      <h1 className="text-2xl text-center mb-4">할일 목록 &#128526; &#127928;</h1>
+
+      <Form addTask={addTask} />
+
+      <div className="flex flex-nowrap gap-1 mb-4">
+        {filterButton}
+      </div>
+
+      <ul>
+        {taskList}
+      </ul>
+    </div>
+  )
+}
+
+function Form(props) {
+  // todo에 새롭게 입력받는 값
+  const [name, setName] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.addTask(name);
+    setName(""); // form을 제출하고 input을 비운다
+  }
+
+  return (
+    <form
+      className="mb-4"
+      onSubmit={handleSubmit}
+    >
+      <input
+        type="text"
+        className="border px-2 py-1 w-full mb-2"
+        value={name}
+        // onChange 이벤트를 처리하는 함수
+        // 인풋의 벨류가 바뀔떄마다 업데이트됨
+        onChange={(e) => setName(e.target.value)}
+        autoComplete="off"
+      />
+      <button
+        type="submit"
+        className="p-1 w-full border disabled:opacity-50 text-blue-500">
+        Add
+      </button>
+    </form>
+  )
+}
+
+function FilterButton(props) {
+  return (
+    <button
+    className="p-1 w-1/3"
+    >
+      {props.name}
+    </button>
+  )
+}
+
+function Todo(props) {
+
+  return (
+    <li className="mb-4">
+      <div className="flex mb-2">
+        <label>
+          <input type="checkbox" className="hidden peer" checked={props.completed} onChange={() => props.toggleTaskCompleted(props.id)} />
+          <span className="text-xl peer-checked:line-through">
+            {props.name}
+          </span>
+        </label>
+      </div>
+
+      <div className="flex flex-nowrap gap-1">
+        <button className="w-1/2 p-1 border ">Edit</button>
+        <button className="w-1/2 p-1 border text-red-500" onClick={() => props.deleteTask(props.id)}>Delete</button>
+      </div>
+    </li>
+  )
+}
