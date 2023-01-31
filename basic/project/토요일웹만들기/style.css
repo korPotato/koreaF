@@ -164,6 +164,11 @@ main .main_banner_box1 li {
     font-size: 0;
     text-align: center;
     vertical-align: top;
+    width: 50%;
+}
+main .main_banner_box1 img {
+    width: 100%;
+    display: block;
 }
 main .main_banner_box1 li a{
     width: 100%;
