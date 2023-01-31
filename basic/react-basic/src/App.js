@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useState} from "react";
+import React, {createContext, useContext, useEffect, useState, useRef} from "react";
 import {BrowserRouter as Router, Routes, Route, Link, Outlet, useParams} from "react-router-dom";
 
 export default App;
@@ -1108,25 +1108,36 @@ export default App;
 //   )
 // }
 
+// 첫 로드 화면 초기값
 const initialTasks = [
   { id: "todo-0", name: "Eat", completed: true },
   { id: "todo-1", name: "Sleep", completed: false },
   { id: "todo-2", name: "Repeat", completed: false }
 ];
 
+// 필터
 const FILTER_MAP = {
   All: () => true,
   Done: task => task.completed,
   Active: task => !task.completed
 }
 const FILTER_NAMES = Object.keys(FILTER_MAP); // Object.keys 객체속성문자열로 나타낸다
+
 console.log(FILTER_NAMES)
 
+
+
+// 출력화면
 function App() {
+  // tasks의 초기값은 initialTasks
   const [tasks, setTasks] = useState(initialTasks);
+  // 필터의 초기값은 All로 설정
+  const [filter, setFilter] = useState('All');
   // tasks추적하기 
   console.log(tasks);
 
+
+  // todo 새로추가하는 함수
   function addTask(name) {
     const newTask = {
       id: `todo-${Math.random()}`,
@@ -1134,10 +1145,14 @@ function App() {
       name,
       completed: false
     }
+
     const updatedTasks = [...tasks, newTask];
+
     setTasks(updatedTasks)
   }
 
+
+  // todo 삭제하는 함수
   function deleteTask(id) {
     console.log(id)
 
@@ -1146,6 +1161,9 @@ function App() {
     setTasks(remainingTasks)
   }
 
+
+
+  // todo콤플릿 상태를 바꾸는 함수
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {
       if (task.id === id) {
@@ -1157,14 +1175,28 @@ function App() {
     setTasks(updatedTasks)
   }
 
+  function editTask(id, newName) {
+    const editedTasks = tasks.map(task => {
+      if(task.id === id) {
+        return {...task, name: newName}
+      }
+      return task;
+    })  
+    setTasks(editedTasks)
+  }
+
   const filterButton = FILTER_NAMES.map(name => (
     <FilterButton
     key={name}
     name={name}
+    isPressed={filter === name}
+    setFilter={setFilter}
     />
   ))
 
-  const taskList = tasks.map(task => (
+
+  const taskList = tasks.filter(FILTER_MAP[filter]).map(task => (
+    // tasks를 한번 필터하고 map메서드를 실행한다
 
     <Todo
       key={task.id}
@@ -1173,6 +1205,7 @@ function App() {
       completed={task.completed}
       deleteTask={deleteTask}
       toggleTaskCompleted={toggleTaskCompleted}
+      editTask={editTask}
     />
   ))
 
@@ -1186,12 +1219,17 @@ function App() {
         {filterButton}
       </div>
 
+      <h2 className="text-xl mb-4">{taskList.length}개 남았습니다.</h2>
       <ul>
         {taskList}
       </ul>
     </div>
   )
 }
+
+
+
+
 
 function Form(props) {
   // todo에 새롭게 입력받는 값
@@ -1219,17 +1257,23 @@ function Form(props) {
       />
       <button
         type="submit"
-        className="p-1 w-full border disabled:opacity-50 text-blue-500">
+        className="p-1 w-full border disabled:opacity-50 text-blue-500" 
+        disabled={!name.trim()} //벨류에 실질적으로 입력이 되어야 활성화 disabled 
+        // trim() : 문자열 양 끝의 공백을 제거하고 원본 문자열을 수정하지 않고 새로운 문자열을 반환
+        >
         Add
       </button>
+      
     </form>
   )
 }
 
+
 function FilterButton(props) {
   return (
     <button
-    className="p-1 w-1/3"
+    className={"p-1 w-1/3 border " + (props.isPressed && "outline")}
+    onClick={() => props.setFilter(props.name)}
     >
       {props.name}
     </button>
@@ -1238,8 +1282,28 @@ function FilterButton(props) {
 
 function Todo(props) {
 
-  return (
-    <li className="mb-4">
+  const [isEditing, setIsEditing] = useState(false);
+  const [newName, setNewName] = useState("");
+  const inputEl = useRef(null);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.editTask(props.id, newName);
+    setIsEditing(false);
+    // input을 비운다.
+    setNewName("");
+  }
+
+
+  // DOM이 HTML에 주입되고 난 뒤 엘리먼트에 접근이 가능하다.
+  useEffect(() => {
+    if(isEditing) {
+      inputEl.current.focus();
+    }
+  })
+
+  const viewTemplate = (
+    <>
       <div className="flex mb-2">
         <label>
           <input type="checkbox" className="hidden peer" checked={props.completed} onChange={() => props.toggleTaskCompleted(props.id)} />
@@ -1250,9 +1314,47 @@ function Todo(props) {
       </div>
 
       <div className="flex flex-nowrap gap-1">
-        <button className="w-1/2 p-1 border ">Edit</button>
+        <button type="button" className="w-1/2 p-1 border "
+        onClick={() => setIsEditing(true)}>Edit</button>
         <button className="w-1/2 p-1 border text-red-500" onClick={() => props.deleteTask(props.id)}>Delete</button>
       </div>
+    </>
+  );
+  const editingTemplate = (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        className="border px-2 py-1 w-full mb-2"
+        value={newName}
+        onChange={(e) => setNewName(e.target.value)}
+        ref={inputEl}
+      />
+
+      <div>
+        <div className="flex flex-nowrap gap-1">
+          <button
+            type="button"
+            className="w-1/2 p-1 border"
+            onClick={() => setIsEditing(false)}
+            >
+              Cancel
+            </button>
+
+            <button
+            type="submit"
+            className="w-1/2 p-1 border disabled:opacity-50 text-blue-500"
+            disabled={!newName.trim()}
+            >
+              Save
+            </button>
+        </div>
+      </div>
+    </form>
+  );
+
+  return (
+    <li className="mb-4">
+      {isEditing ? editingTemplate : viewTemplate}
     </li>
   )
 }
