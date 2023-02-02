@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+ <!-- <h1>Search Form</h1>
+
+ <style>
+    form {
+        /* border: 1px dashed; */
+        max-width: 24rem;
+        /* top/bottom left/right */
+        margin: 0 auto;
+        display: flex;
+    }
+    input {
+        padding: 0.5rem;
+        flex-grow: 1;
+    }
+    button {
+        cursor: pointer;
+    }
+ </style>
+
+<form action="#">
+    <input type="text" placeholder="Search Google">
+    <button type="submit">Submit</button>
+</form> -->
+
+
+
+<!-- <style>
+    form {
+        /* border: 1px dashed; */
+        max-width: 24rem;
+        margin: 0 auto;
+        margin은 element 바깥 공간이므로 속하지 않음
+    }
+    label {
+        display: block;
+    }
+    input, select {
+        padding: 0.5rem;
+        width: 100%;
+        width도 똑같이 386px인 것
+        box-sizing: border-box;
+    }
+    button {
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+    .mb-2 {
+        margin-bottom: 0.5rem;
+    }
+    .flex {
+        display: flex;
+    }
+    .basis-50 {
+        flex-basis: 50%;
+        basis는 flex에서의 너비
+    }
+    .ml-2 {
+        margin-left: 0.5rem;
+    }
+</style> -->
+
+
+
+
+<!-- <h1>Personal Form</h1>
+
+<form action="" autocomplete="off">
+    <h2>Personal Information</h2>
+
+    <div class="mb-2 flex">
+        <div class="basis-50"> 
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Doe">
+        </div>
+        <div class="basis-50 ml-2">
+            <label for="lname">Last Name</label>
+            <input type="text" placeholder="John">
+        </div>
+    </div>
+
+<div class="mb-2">
+    <label for="email">Email</label>
+    <input type="text" id="email" placeholder="John Doe@examlple.com">
+</div>
+
+<div class="mb-2">
+    <label for="city">City</label>
+    <select name="city" id="city">
+        <option value="seoul">Seoul</option>
+        <option value="incheon">Incheon</option>
+        <option value="busan">Busan</option>
+    </select>
+</div>
+
+<button type="submit">Save</button>
+</form> -->
+
+<!-- <h1>Login Form</h1>
+
+<style>
+    form {
+        max-width: 24rem;
+        margin: auto;
+    }
+    h2 {
+        text-align: center
+    }
+    label {
+        display: block;
+    }
+    input {
+        padding: 0.5rem;
+        width: 100%;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+    button {
+        width: 100%;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+    .mb-2 {
+        margin-bottom: 0.5rem;
+    }
+    .flex {
+        display: flex;
+    }
+    .justify-between {
+        justify-content: space-between;
+    }
+</style> -->
+
+<!-- <form action=""  autocomplete="off">
+<h2>&#127760; Login </h2>
+
+<div class="mb-2">
+        <label for="username">Username</label>
+        <input type="text" id="username">
+    </div>
+
+    <div class="mb-2">
+        <label for="password">Password</label>
+        <div class="relative">
+            <input type="password" id="password">
+        </div>
+        <input type="text" id="password">
+    </div>
+    
+    <div class="mb-2">
+        <label for="submit">Login</label>
+    </div>
+
+    <div class="flex justify-beyween">
+        <a href="#">Sign up</a>
+        <a href="#">Forgot Password?</a>
+    </div>
+</form> -->
+
+<!-- <h1>Table</h1>
+
+<style>
+    table {
+        table은 항상 경계선이 생김
+        border-collapse: collapse;
+    }
+    caption {
+        text-align: left;
+        caption-side: bottom;
+    }
+    td[scope=row] {
+        font-weight: bold;
+    }
+    thead tr {
+        border-bottom: 1px solid;
+    }
+    th. td {
+        padding: 0.5rem;
+    }
+    /* odd는 홀수행, even은 짝수행 */
+    tbody tr:nth-child(odd) {
+        background-color: #ddd;
+    }
+</style> -->
+
+<!-- <table>
+    <caption> * caption</caption>
+    caption은 table의 보조설명을 뜻하는 태그
+    <thead>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">1</td>
+            <td>Heineken</td>
+            <td>Netherlands</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td scope="row">2</td>
+            <td>Guinness</td>
+            <td>Ireland</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td scope="row">3</td>
+            <td>Budwiser</td>
+            <td>USA</td>
+            <td>Yes</td>
+        </tr>
+    </tbody>
+</table> -->
+
+<!-- <style>
+    .container {
+        border: 1px dashed;
+        display: inline-block;
+    }
+    .container:hover ul{
+        display: block;
+    }
+    button {
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 200px;
+        border: 1px solid #ddd;
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        absolute 단독으로 쓰이는 경우는 dropdown뿐임
+        ul의 display도 block임
+    }
+    a {
+        a(앵커)태그에 padding을 적용하면 클릭 가능
+        display: block;
+        padding: 0.5rem;
+    }
+    a:hover {
+        background-color: #ddd;
+    }
+</style> -->
+
+
+<!-- <h1>Dropdown</h1>
+
+
+<div class="container">
+    <button>Dropdown</button>
+<ul>
+    <li><a href="#">list item</a>
+    </li>
+    <li><a href="#">list item</a>
+    </li>
+    <li>
+    <a href="#">listitem</a>
+</li>
+</ul>
+</div>
+
+<p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur laudantium quae iure itaque praesentium quas molestiae ullam eveniet perspiciatis veniam. Voluptates nesciunt unde vel dolore? Voluptate non ducimus error iusto.
+</p> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<html>

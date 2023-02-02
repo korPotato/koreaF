@@ -2,25 +2,26 @@ import React, {useState, useEffect} from 'react';
 
 function fetchDate() {
 
-  const promise = fetch(`요청할 주소`)
+  const promise = fetch(`https://apis.data.go.kr/B552061/frequentzoneBicycle/getRestFrequentzoneBicycle?serviceKey=L%2Fvhxk2Pa4LqA8NKubHtPZAq6zzaytKS3ne6aPFZV9w1LWkBqjMiQgkVPH6d3p6CcnQbmI%2FMq2AUIIViCvKOAA%3D%3D&searchYearCd=2021&siDo=11&guGun=110&type=json&numOfRows=10&pageNo=1`)
     .then(res => {
       if(!res.ok) {
         throw res;
       }
       return res.json()
     })
+    
     return promise;
 }
 
 export default function App() {
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = usestate(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData]= useState(null);
 
   console.log(data)
 
   useEffect(() => {
-    fetchData()
+    fetchDate()
       .then(data => {
         setData(data)
       }) 

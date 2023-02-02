@@ -1,0 +1,19 @@
+https://apis.data.go.kr/B552061/frequentzoneBicycle/getRestFrequentzoneBicycle?
+serviceKey=L%2Fvhxk2Pa4LqA8NKubHtPZAq6zzaytKS3ne6aPFZV9w1LWkBqjMiQgkVPH6d3p6CcnQbmI%2FMq2AUIIViCvKOAA%3D%3D
+&searchYearCd=2021
+&siDo=11
+&guGun=110
+&type=json
+&numOfRows=10
+&pageNo=1
+
+
+역할 분담
+0. 주제, 목업(프로토타입)
+1. 레이아웃 & CSS
+2. 카카오지도
+3. 차트 (Rechart)
+디폴로이 
+발표
+
+
